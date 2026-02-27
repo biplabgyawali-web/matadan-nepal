@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Matadan Nepal — Election 2082 BS / 2026 AD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&family=Mukta+Vaani:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════════════
+   RESET + ROOT
+═══════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --nc:#174ea6; --uml:#c0392b; --ncp:#6b0f1a; --rsp:#d4600a;
+  --rpp:#1a7a40; --ujy:#0369a1; --janamat:#92400e; --psp:#7c3aed;
+  --ssp:#78350f; --ind:#64748b;
+  --ink:#0f1923; --ink-2:#374151; --ink-3:#6b7280; --ink-4:#9ca3af;
+  --rule:#e5e7eb; --bg:#f5f4f0; --white:#ffffff;
+  --red:#c0392b; --pre:#7c3aed; --gold:#b45309;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh}
+
+/* ═══════════════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+.anim{opacity:0;animation:fadeUp .45s ease forwards}
+.a1{animation-delay:.05s}.a2{animation-delay:.12s}.a3{animation-delay:.19s}
+.a4{animation-delay:.26s}.a5{animation-delay:.33s}.a6{animation-delay:.4s}
+.a7{animation-delay:.47s}.a8{animation-delay:.54s}
+
+/* ═══════════════════════════════════════════════════
+   HEADER
+═══════════════════════════════════════════════════ */
+header{background:var(--white);border-bottom:2px solid var(--red);position:sticky;top:0;z-index:200}
+.header-top{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:11px 28px 9px;gap:20px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer}
+.brand-nep{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--red);line-height:1}
+.brand-divider{width:1px;height:20px;background:var(--rule)}
+.brand-eng{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink-3)}
+.nav{display:flex;gap:2px}
+.nav-btn{font-size:12px;font-weight:500;color:var(--ink-2);border:none;background:transparent;padding:6px 14px;border-radius:3px;cursor:pointer;transition:background .15s;font-family:'DM Sans',sans-serif}
+.nav-btn:hover{background:#f0f0ef}
+.nav-btn.active{background:var(--ink);color:#fff}
+.header-clock{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-3);white-space:nowrap}
+
+/* COUNTDOWN STRIP */
+.countdown-strip{background:linear-gradient(90deg,#1e1b4b 0%,#312e81 40%,#3730a3 100%);padding:10px 28px}
+.countdown-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.cd-left{display:flex;align-items:center;gap:16px}
+.cd-tag{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:#818cf8;white-space:nowrap}
+.cd-units{display:flex;gap:8px}
+.cd-unit{background:rgba(255,255,255,.12);border-radius:4px;padding:5px 10px;text-align:center;min-width:46px}
+.cd-num{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:#fff;line-height:1}
+.cd-lbl{font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#818cf8;margin-top:1px}
+.cd-right{text-align:right}
+.cd-right p{font-size:11px;color:#c7d2fe;line-height:1.6}
+.cd-right strong{color:#fff}
+
+/* INFO STRIP */
+.info-strip{background:var(--ink);padding:5px 28px;display:flex;justify-content:center;align-items:center;gap:24px;flex-wrap:wrap}
+.info-strip span{font-size:11px;color:#6b7280;letter-spacing:.3px}
+.info-strip strong{color:#fcd34d}
+.info-dot{color:#374151}
+
+/* ═══════════════════════════════════════════════════
+   NEPALI LANGUAGE MODE
+═══════════════════════════════════════════════════ */
+body.lang-ne { font-family: 'Mukta Vaani', 'DM Sans', sans-serif; }
+body.lang-ne .brand-nep { letter-spacing: 0; }
+body.lang-ne h2, body.lang-ne h1 { font-family: 'Mukta Vaani', serif; font-style: normal; }
+
+/* ═══════════════════════════════════════════════════
+   LANGUAGE SPLASH SCREEN
+═══════════════════════════════════════════════════ */
+#lang-splash {
+  position: fixed; inset: 0; z-index: 9999;
+  background: #0f1923;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+}
+#lang-splash.hidden { display: none; }
+.splash-inner {
+  text-align: center; max-width: 520px; padding: 40px 24px;
+  animation: fadeUp .6s ease both;
+}
+.splash-flag {
+  font-size: 56px; margin-bottom: 20px; display: block;
+  animation: pulse 2s ease infinite;
+}
+.splash-title-ne {
+  font-family: 'Mukta Vaani', serif; font-size: 36px; font-weight: 800;
+  color: #fff; line-height: 1.15; margin-bottom: 6px;
+}
+.splash-title-en {
+  font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 400;
+  font-style: italic; color: #818cf8; margin-bottom: 8px;
+}
+.splash-sub {
+  font-size: 13px; color: #6b7280; margin-bottom: 36px; line-height: 1.6;
+}
+.splash-sub strong { color: #fcd34d; }
+.splash-prompt {
+  font-size: 11px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: #4b5563; margin-bottom: 16px;
+}
+.splash-btns { display: flex; gap: 14px; justify-content: center; }
+.splash-btn {
+  flex: 1; max-width: 200px; padding: 18px 20px;
+  border-radius: 6px; border: 2px solid transparent;
+  cursor: pointer; transition: all .2s; text-align: center;
+  font-family: inherit;
+}
+.splash-btn-ne {
+  background: #c0392b; border-color: #c0392b;
+  color: #fff;
+}
+.splash-btn-ne:hover { background: #a93226; border-color: #a93226; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(192,57,43,.4); }
+.splash-btn-ne .btn-label-main { font-family: 'Mukta Vaani', serif; font-size: 22px; font-weight: 800; display: block; margin-bottom: 3px; }
+.splash-btn-ne .btn-label-sub  { font-size: 10px; opacity: .8; letter-spacing: 1px; text-transform: uppercase; }
+.splash-btn-en {
+  background: transparent; border-color: #374151; color: #9ca3af;
+}
+.splash-btn-en:hover { border-color: #6b7280; color: #fff; transform: translateY(-2px); }
+.splash-btn-en .btn-label-main { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; display: block; margin-bottom: 3px; color: #fff; }
+.splash-btn-en .btn-label-sub  { font-size: 10px; opacity: .7; letter-spacing: 1px; text-transform: uppercase; }
+.splash-divider { color: #374151; font-size: 18px; align-self: center; }
+.splash-date-strip {
+  margin-top: 32px; padding: 10px 20px;
+  background: rgba(255,255,255,.05); border-radius: 4px;
+  font-size: 12px; color: #6b7280;
+}
+.splash-date-strip strong { color: #c7d2fe; }
+
+/* Language toggle in header */
+.lang-toggle {
+  display: flex; gap: 2px; background: var(--bg);
+  border: 1px solid var(--rule); border-radius: 4px; overflow: hidden;
+}
+.lang-btn {
+  padding: 4px 10px; font-size: 11px; font-weight: 700;
+  border: none; background: transparent; cursor: pointer;
+  color: var(--ink-3); transition: all .15s; font-family: inherit;
+}
+.lang-btn.active { background: var(--ink); color: #fff; }
+
+.page{display:none}
+.page.active{display:block}
+.page-content{max-width:1280px;margin:0 auto;padding:32px 28px 80px}
+
+/* ═══════════════════════════════════════════════════
+   SHARED COMPONENTS
+═══════════════════════════════════════════════════ */
+.section-head{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1.5px solid var(--ink);padding-bottom:8px;margin-bottom:22px}
+.section-head h2{font-family:'Playfair Display',serif;font-size:19px;font-weight:700}
+.section-head span{font-size:11px;color:var(--ink-3)}
+
+.pre-notice{background:#faf5ff;border:1px solid #ddd6fe;border-left:4px solid var(--pre);border-radius:4px;padding:14px 18px;margin-bottom:28px;display:flex;gap:10px;align-items:flex-start}
+.pre-notice .icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.pre-notice h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.pre-notice p{font-size:12px;color:var(--ink-2);line-height:1.55}
+.pre-notice .zero-badge{display:inline-block;margin-top:8px;font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:#ede9fe;color:var(--pre);border:1px solid #ddd6fe}
+
+/* Cards */
+.card{background:var(--white);border:1px solid var(--rule);border-radius:4px}
+
+/* Widget */
+.widget{background:var(--white);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.widget-header{display:flex;align-items:center;justify-content:space-between;padding:11px 15px;border-bottom:1px solid var(--rule);background:var(--bg)}
+.widget-header h3{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink-2)}
+.widget-header span{font-size:10px;color:var(--ink-3)}
+
+/* Badges */
+.badge{font-size:10px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 8px;border-radius:2px}
+.badge-pre{background:#f5f3ff;color:var(--pre);border:1px solid #ddd6fe}
+.badge-watch{background:#fef3c7;color:#92400e}
+.badge-key{background:#fee2e2;color:#991b1b}
+.badge-incumbent{background:#ede9fe;color:#5b21b6}
+.badge-new{background:#fce7f3;color:#9d174d}
+.badge-notable{background:#dcfce7;color:#15803d}
+.badge-pm{background:#fef3c7;color:#92400e}
+.badge-won{background:#dcfce7;color:#15803d}
+.badge-nat{background:#dcfce7;color:#15803d}
+.badge-below{background:#fee2e2;color:#991b1b}
+
+/* Pill */
+.pill{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:2px;color:#fff;text-transform:uppercase;letter-spacing:.4px}
+
+/* Toast */
+#toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:#fff;padding:10px 20px;border-radius:4px;font-size:12px;font-weight:500;box-shadow:0 4px 20px rgba(0,0,0,.25);transition:transform .35s cubic-bezier(.4,0,.2,1);z-index:999;white-space:nowrap}
+#toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ═══════════════════════════════════════════════════
+   PAGE 1: DASHBOARD
+═══════════════════════════════════════════════════ */
+
+/* Seat bar */
+.seat-bar-section{padding:24px 0 28px}
+.seat-bar-label{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-3);margin-bottom:6px}
+.seat-bar-label strong{color:var(--ink);font-size:12px}
+.seat-bar-track{height:14px;background:var(--rule);border-radius:7px;overflow:hidden;position:relative;display:flex}
+.seat-bar-seg{height:100%;transition:width 1s}
+.majority-marker{position:absolute;top:0;bottom:0;border-left:2px dashed #374151;z-index:10}
+.majority-label{position:absolute;top:-18px;font-size:9px;font-weight:700;color:#374151;transform:translateX(-50%);white-space:nowrap}
+
+/* Party grid */
+.party-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-bottom:40px}
+.party-card{background:var(--white);border:1px solid var(--rule);border-top:3px solid transparent;border-radius:4px;padding:16px;cursor:default}
+.p-abbr{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px}
+.p-full{font-size:11px;color:var(--ink-3);margin-bottom:8px;line-height:1.35}
+.p-leader-lbl{font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-4);margin-bottom:2px}
+.p-leader{font-size:12px;font-weight:600;color:var(--ink-2);margin-bottom:10px}
+.p-seats{display:flex;gap:14px}
+.p-seat-item{text-align:center}
+.p-seat-num{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1;color:var(--ink-3)}
+.p-seat-lbl{font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-4)}
+.pm-tag{display:inline-block;margin-top:10px;font-size:9px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;padding:2px 8px;border-radius:2px;background:#fef3c7;color:#92400e}
+
+/* Const table */
+.two-col{display:grid;grid-template-columns:1fr 360px;gap:24px;align-items:start}
+@media(max-width:920px){.two-col{grid-template-columns:1fr}}
+.table-card{background:var(--white);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.table-filter{display:flex;gap:8px;align-items:center;padding:11px 14px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.search-inp{flex:1;min-width:160px;border:1px solid var(--rule);border-radius:3px;padding:6px 10px;font-size:12px;font-family:'DM Sans',sans-serif;outline:none;background:var(--bg);color:var(--ink)}
+.search-inp:focus{border-color:var(--pre)}
+.filter-chip{font-size:11px;font-weight:500;padding:4px 11px;border-radius:20px;border:1px solid var(--rule);cursor:pointer;color:var(--ink-2);background:transparent;transition:all .15s;font-family:'DM Sans',sans-serif;white-space:nowrap}
+.filter-chip.active,.filter-chip:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+table{width:100%;border-collapse:collapse}
+thead th{background:var(--bg);font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink-3);padding:9px 14px;text-align:left;border-bottom:1px solid var(--rule);white-space:nowrap}
+tbody tr{border-bottom:1px solid var(--rule);transition:background .1s;cursor:pointer}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:#f5f5f2}
+tbody td{padding:10px 14px;font-size:12px;vertical-align:middle}
+.td-const-name{font-weight:600;color:var(--ink)}
+.td-const-name small{font-weight:400;color:var(--ink-3);font-size:11px;display:block}
+.cand-line{display:flex;align-items:center;gap:4px;line-height:1.7}
+.cand-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.votes-zero{font-family:'DM Mono',monospace;font-size:11px;color:var(--pre)}
+.show-more-btn{width:100%;padding:11px;font-size:12px;font-weight:600;color:var(--pre);background:var(--bg);border:none;border-top:1px solid var(--rule);cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .15s}
+.show-more-btn:hover{background:#ede9fe}
+
+/* Sidebar */
+.sidebar{display:flex;flex-direction:column;gap:18px}
+.key-race{padding:11px 14px;border-bottom:1px solid var(--rule)}
+.key-race:last-child{border-bottom:none}
+.kr-title{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:6px;display:flex;align-items:center;gap:6px;cursor:pointer}
+.kr-title:hover{color:var(--rsp)}
+.kr-cand{display:flex;align-items:center;gap:7px;font-size:12px;padding:4px 0}
+.kr-cand .cand-avatar{box-shadow:0 1px 4px rgba(0,0,0,.2);flex-shrink:0}
+.kr-name{flex:1;font-weight:500}
+.kr-votes{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-3)}
+
+.leader-row{display:flex;align-items:center;gap:9px;padding:8px 14px;border-bottom:1px solid var(--rule)}
+.leader-row:last-child{border-bottom:none}
+.leader-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.leader-name{flex:1;font-size:12px;font-weight:600}
+.leader-name small{font-weight:400;color:var(--ink-3);font-size:10px;display:block}
+.leader-const{font-size:11px;color:var(--ink-3);text-align:right;white-space:nowrap}
+
+.prov-row{display:flex;align-items:center;gap:8px;padding:8px 14px;border-bottom:1px solid var(--rule);font-size:12px}
+.prov-row:last-child{border-bottom:none}
+.prov-name{flex:1;font-weight:600}
+.prov-name small{font-weight:400;color:var(--ink-3);font-size:10px}
+.prov-seats{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-3)}
+
+/* ═══════════════════════════════════════════════════
+   PAGE 2: CONSTITUENCY DETAIL
+═══════════════════════════════════════════════════ */
+.const-search-bar{background:var(--white);border-bottom:1px solid var(--rule);padding:10px 28px}
+.const-search-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px}
+.breadcrumb a{color:var(--ink-3);text-decoration:none;cursor:pointer}
+.breadcrumb a:hover{color:var(--ink)}
+.breadcrumb span{color:var(--ink-3)}
+.bc-current{color:var(--ink);font-weight:600}
+.sc-wrap{position:relative}
+.sc-input{border:1px solid var(--rule);border-radius:3px;padding:6px 10px 6px 28px;font-size:12px;font-family:'DM Sans',sans-serif;color:var(--ink);background:var(--bg);outline:none;width:220px;transition:border-color .15s}
+.sc-input:focus{border-color:var(--pre)}
+.sc-icon{position:absolute;left:8px;top:50%;transform:translateY(-50%);color:var(--ink-3);font-size:13px;pointer-events:none}
+.sc-drop{position:absolute;top:calc(100% + 4px);left:0;right:0;background:var(--white);border:1px solid var(--rule);border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:300;display:none;max-height:240px;overflow-y:auto}
+.sc-drop.open{display:block}
+.sc-item{padding:9px 14px;cursor:pointer;font-size:12px;border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;transition:background .1s}
+.sc-item:last-child{border-bottom:none}
+.sc-item:hover{background:#f0f4f8}
+
+/* Hero */
+.hero{background:var(--white);border:1px solid var(--rule);border-radius:4px;margin-bottom:24px;overflow:hidden}
+.hero-top{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:start;padding:20px 24px 16px;border-bottom:1px solid var(--rule)}
+.hero-h1{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;line-height:1.1;margin-bottom:4px}
+.hero-ne{font-style:italic;color:var(--ink-3);font-size:14px;font-family:'Playfair Display',serif;display:block;margin-top:2px}
+.hero-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.chip{font-size:11px;font-weight:500;color:var(--ink-2);padding:3px 10px;background:var(--bg);border:1px solid var(--rule);border-radius:20px}
+.hero-right{text-align:right}
+.hero-pre-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:3px;background:#f5f3ff;color:var(--pre);border:1px solid #ddd6fe;margin-bottom:6px}
+.hero-updated{font-size:11px;color:var(--ink-3);white-space:nowrap}
+.hero-bar-row{padding:12px 24px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--rule)}
+.hb-label{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+.hb-track{flex:1;height:7px;background:var(--rule);border-radius:4px;overflow:hidden}
+.hb-fill{height:100%;width:0%;background:var(--pre);border-radius:4px}
+.hb-pct{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;color:var(--pre);white-space:nowrap}
+.hb-detail{font-size:11px;color:var(--ink-3);white-space:nowrap}
+.hero-waiting{padding:14px 24px;background:#faf5ff;display:flex;gap:10px;align-items:center}
+.hw-icon{font-size:18px;flex-shrink:0}
+.hw-text h3{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.hw-text p{font-size:11px;color:var(--ink-3);line-height:1.5}
+
+/* Cand cards */
+.cand-list{display:flex;flex-direction:column;gap:9px;margin-bottom:22px}
+.cand-card{background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:14px 18px;cursor:pointer;transition:box-shadow .2s;position:relative;overflow:hidden}
+.cand-card:hover{box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.cand-top{display:flex;align-items:center;gap:11px}
+.cand-num{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;color:var(--ink-3);width:20px;flex-shrink:0;text-align:center}
+.cand-avatar{width:56px;height:56px;border-radius:50%;flex-shrink:0;overflow:hidden;position:relative;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.cand-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.cand-avatar svg{display:block}
+.cand-info{flex:1}
+.cand-name{font-size:14px;font-weight:700;color:var(--ink);line-height:1.2}
+.cand-party{font-size:11px;font-weight:600;margin-top:1px}
+.cand-party-full{font-size:11px;color:var(--ink-3);font-weight:400}
+.cand-votes{text-align:right;flex-shrink:0}
+.cand-votes-num{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink-3);line-height:1}
+.cand-votes-lbl{font-size:10px;color:var(--ink-3)}
+.cand-meta{margin-top:9px;padding-left:32px;display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+
+/* Prev results */
+.prev-section{background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:16px 18px;margin-bottom:22px}
+.prev-row{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--rule)}
+.prev-row:last-child{border-bottom:none}
+.prev-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.prev-name{flex:1;font-size:12px;font-weight:600}
+.prev-name small{font-weight:400;color:var(--ink-3);font-size:10px;display:block}
+.prev-votes{font-family:'DM Mono',monospace;font-size:12px;color:var(--ink-2)}
+.prev-bar-wrap{width:80px;height:4px;background:var(--rule);border-radius:2px;margin-top:3px}
+.prev-bar-fill{height:100%;border-radius:2px}
+
+/* Const facts sidebar */
+.facts-list{padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.fact-row{display:flex;justify-content:space-between;align-items:baseline}
+.fact-label{font-size:12px;color:var(--ink-3)}
+.fact-val{font-size:12px;font-weight:600;color:var(--ink);font-family:'DM Mono',monospace}
+
+.nearby-row{display:flex;align-items:center;gap:8px;padding:9px 14px;border-bottom:1px solid var(--rule);cursor:pointer;transition:background .1s}
+.nearby-row:last-child{border-bottom:none}
+.nearby-row:hover{background:#f5f5f2}
+.nearby-name{flex:1;font-size:12px;font-weight:600}
+.nearby-name small{font-weight:400;color:var(--ink-3);font-size:10px}
+
+/* ═══════════════════════════════════════════════════
+   PAGE 3: PR DASHBOARD
+═══════════════════════════════════════════════════ */
+.pr-page-title{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1.5px solid var(--ink);padding-bottom:14px;margin-bottom:28px}
+.pr-page-title h1{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1.1}
+.pr-page-title h1 em{font-style:italic;color:var(--ink-3);font-size:16px;display:block;margin-top:3px;font-family:'Playfair Display',serif}
+.pr-meta{text-align:right;font-size:11px;color:var(--ink-3);line-height:1.7}
+.pr-meta strong{color:var(--ink-2)}
+
+.stat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin-bottom:32px}
+@media(max-width:800px){.stat-row{grid-template-columns:repeat(3,1fr)}}
+.stat-card{background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:14px 16px}
+.stat-label{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.stat-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;line-height:1;color:var(--ink);margin-bottom:2px}
+.stat-sub{font-size:10px;color:var(--ink-3)}
+
+.pr-table-card{background:var(--white);border:1px solid var(--rule);border-radius:4px;overflow:hidden;margin-bottom:32px}
+.pr-table-card table thead th{padding:9px 14px}
+.pr-table-card table tbody td{padding:10px 14px}
+.ref-bar-wrap{width:100px;height:4px;background:var(--rule);border-radius:2px;margin-top:4px}
+.ref-bar-fill{height:100%;border-radius:2px}
+.mono{font-family:'DM Mono',monospace;font-size:12px}
+.zero-pre{font-family:'DM Mono',monospace;font-size:11px;color:var(--pre)}
+
+.thr-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+@media(max-width:640px){.thr-grid{grid-template-columns:1fr}}
+.thr-box{background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:14px 16px}
+.thr-box h4{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
+.thr-box p{font-size:12px;color:var(--ink-2);line-height:1.55}
+.thr-note{display:flex;gap:10px;align-items:flex-start;background:#fef9c3;border:1px solid #fde68a;border-radius:4px;padding:12px 14px;font-size:12px;color:#78350f;line-height:1.5}
+
+.ref-section{background:var(--white);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.ref-row{display:flex;align-items:center;gap:9px;padding:9px 14px;border-bottom:1px solid var(--rule)}
+.ref-row:last-child{border-bottom:none}
+.ref-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.ref-name{flex:1;font-size:12px;font-weight:600}
+.ref-name small{font-weight:400;color:var(--ink-3);font-size:10px;display:block}
+.ref-bar-h{width:80px}
+.ref-bar-hbg{height:4px;background:var(--rule);border-radius:2px}
+.ref-bar-hfill{height:100%;border-radius:2px}
+.ref-pct{font-family:'DM Mono',monospace;font-size:12px;font-weight:600;width:44px;text-align:right}
+.ref-seats{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-3);width:50px}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     LANGUAGE SELECTION SPLASH
+═══════════════════════════════════════════════════ -->
+<div id="lang-splash">
+  <div class="splash-inner">
+    <span class="splash-flag">🇳🇵</span>
+    <div class="splash-title-ne">मतदान नेपाल</div>
+    <div class="splash-title-en">Matadan Nepal</div>
+    <div class="splash-sub">
+      प्रतिनिधि सभा निर्वाचन <strong>२०८२</strong> · House of Representatives Election <strong>2082 BS</strong>
+    </div>
+    <div class="splash-prompt">Choose your language · भाषा छान्नुहोस्</div>
+    <div class="splash-btns">
+      <button class="splash-btn splash-btn-ne" onclick="chooseLang('ne')">
+        <span class="btn-label-main">नेपाली</span>
+        <span class="btn-label-sub">Nepali</span>
+      </button>
+      <div class="splash-divider">/</div>
+      <button class="splash-btn splash-btn-en" onclick="chooseLang('en')">
+        <span class="btn-label-main">English</span>
+        <span class="btn-label-sub">अंग्रेजी</span>
+      </button>
+    </div>
+    <div class="splash-date-strip">
+      मतदान: <strong>फाल्गुन २१, २०८२</strong> &nbsp;·&nbsp; Election: <strong>5 March 2026</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     HEADER (shared, always visible)
+═══════════════════════════════════════════════════ -->
+<header>
+  <div class="header-top">
+    <div class="brand" onclick="nav('dashboard')">
+      <span class="brand-nep">मतदान नेपाल</span>
+      <div class="brand-divider"></div>
+      <span class="brand-eng">Matadan Nepal</span>
+    </div>
+    <nav class="nav">
+      <button class="nav-btn active" id="nav-dashboard" onclick="nav('dashboard')">Dashboard</button>
+      <button class="nav-btn" id="nav-constituency" onclick="nav('constituency')">Constituencies</button>
+      <button class="nav-btn" id="nav-pr" onclick="nav('pr')">PR Results</button>
+    </nav>
+    <span class="header-clock" id="clock">—</span>
+    <div class="lang-toggle">
+      <button class="lang-btn" id="lb-ne" onclick="setLang('ne')">नेपाली</button>
+      <button class="lang-btn active" id="lb-en" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+
+  <div class="countdown-strip">
+    <div class="countdown-inner">
+      <div class="cd-left">
+        <span class="cd-tag">Election Day Countdown</span>
+        <div class="cd-units">
+          <div class="cd-unit"><div class="cd-num" id="cd-d">—</div><div class="cd-lbl">Days</div></div>
+          <div class="cd-unit"><div class="cd-num" id="cd-h">—</div><div class="cd-lbl">Hours</div></div>
+          <div class="cd-unit"><div class="cd-num" id="cd-m">—</div><div class="cd-lbl">Mins</div></div>
+          <div class="cd-unit"><div class="cd-num" id="cd-s">—</div><div class="cd-lbl">Secs</div></div>
+        </div>
+      </div>
+      <div class="cd-right">
+        <p><strong>Pratinidhi Sabha Nirvachan 2082 BS</strong></p>
+        <p>Falgun 21, 2082 &nbsp;·&nbsp; <strong>5 March 2026</strong> &nbsp;·&nbsp; 7:00 AM – 5:00 PM NST</p>
+        <p>18,903,689 registered voters &nbsp;·&nbsp; 3,484 candidates &nbsp;·&nbsp; 68 parties</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-strip">
+    <span>House of Representatives — Pratinidhi Sabha</span>
+    <span class="info-dot">·</span>
+    <span><strong>165 FPTP</strong> seats</span>
+    <span class="info-dot">+</span>
+    <span><strong>110 PR</strong> seats</span>
+    <span class="info-dot">=</span>
+    <span><strong>275 total</strong> seats</span>
+    <span class="info-dot">·</span>
+    <span>Majority: <strong>138</strong></span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 1: DASHBOARD
+═══════════════════════════════════════════════════ -->
+<div id="page-dashboard" class="page active">
+  <div class="page-content">
+
+    <div class="pre-notice anim a1">
+      <div class="icon">⏳</div>
+      <div>
+        <h4>Awaiting Election Day — Falgun 21, 2082 BS &nbsp;(5 March 2026)</h4>
+        <p>All vote counts are zero. This dashboard will update live once counting begins after 5PM on election day. Party, candidate, and constituency data below is verified from the Election Commission of Nepal and major Nepali news sources.</p>
+        <span class="zero-badge">All vote counts = 0 until counting begins</span>
+      </div>
+    </div>
+
+    <!-- SEAT ALLOCATION BAR -->
+    <div class="section-head anim a2">
+      <h2>Seat Allocation — 275 Seats</h2>
+      <span>138 needed for majority · All at 0</span>
+    </div>
+    <div class="card anim a2" style="padding:0 24px 20px">
+      <div class="seat-bar-section">
+        <div class="seat-bar-label">
+          <strong>0 seats declared</strong>
+          <span>275 total · 138 majority</span>
+        </div>
+        <div class="seat-bar-track" id="seat-bar">
+          <div style="width:100%;background:var(--rule)"></div>
+          <div class="majority-marker" style="left:50.18%">
+            <span class="majority-label">138 — Majority</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:10px">
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-3)"><span style="width:10px;height:10px;border-radius:50%;background:var(--nc);display:inline-block"></span>NC: 0</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-3)"><span style="width:10px;height:10px;border-radius:50%;background:var(--uml);display:inline-block"></span>UML: 0</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-3)"><span style="width:10px;height:10px;border-radius:50%;background:var(--ncp);display:inline-block"></span>NCP: 0</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-3)"><span style="width:10px;height:10px;border-radius:50%;background:var(--rsp);display:inline-block"></span>RSP: 0</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-3)"><span style="width:10px;height:10px;border-radius:50%;background:var(--rpp);display:inline-block"></span>RPP: 0</div>
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-3)"><span style="width:10px;height:10px;border-radius:50%;background:var(--ind);display:inline-block"></span>Others: 0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARTY GRID -->
+    <div class="section-head anim a3">
+      <h2>Contesting Parties</h2>
+      <span>Major parties · 68 registered · 2082 BS</span>
+    </div>
+    <div class="party-grid" id="party-grid"></div>
+
+    <!-- CONSTITUENCIES TABLE + SIDEBAR -->
+    <div class="section-head anim a4">
+      <h2>Constituencies &amp; Candidates</h2>
+      <span>Select races shown · Click any row for details</span>
+    </div>
+    <div class="two-col anim a5">
+      <div class="table-card">
+        <div class="table-filter">
+          <input class="search-inp" type="text" id="d-search" placeholder="Search constituency or candidate…" oninput="filterConst(this.value)"/>
+          <button class="filter-chip active" onclick="filterProv(this,'all')">All</button>
+          <button class="filter-chip" onclick="filterProv(this,'Bagmati')">Bagmati</button>
+          <button class="filter-chip" onclick="filterProv(this,'Koshi')">Koshi</button>
+          <button class="filter-chip" onclick="filterProv(this,'Madhesh')">Madhesh</button>
+          <button class="filter-chip" onclick="filterProv(this,'Gandaki')">Gandaki</button>
+        </div>
+        <table>
+          <thead><tr>
+            <th>Constituency</th>
+            <th>Key Candidates</th>
+            <th>Voters</th>
+            <th>Votes Cast</th>
+          </tr></thead>
+          <tbody id="const-tbody"></tbody>
+        </table>
+        <button class="show-more-btn" id="show-more" onclick="showMore()">Show more ↓</button>
+      </div>
+
+      <div class="sidebar">
+        <div class="widget anim a5">
+          <div class="widget-header"><h3>Key Races to Watch</h3><span>High-profile contests</span></div>
+          <div id="key-races-widget"></div>
+        </div>
+        <div class="widget anim a6">
+          <div class="widget-header"><h3>Party Leaders' Seats</h3></div>
+          <div id="leaders-widget"></div>
+        </div>
+        <div class="widget anim a7">
+          <div class="widget-header"><h3>Seats by Province</h3><span>FPTP</span></div>
+          <div id="prov-widget"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 2: CONSTITUENCY DETAIL
+═══════════════════════════════════════════════════ -->
+<div id="page-constituency" class="page">
+  <!-- Sub-nav bar for constituency search -->
+  <div class="const-search-bar">
+    <div class="const-search-inner">
+      <div class="breadcrumb">
+        <a onclick="nav('dashboard')">Home</a>
+        <span>›</span>
+        <a onclick="nav('constituency')">Constituencies</a>
+        <span>›</span>
+        <span id="bc-prov" class="bc-current">Bagmati</span>
+        <span>›</span>
+        <span id="bc-name" class="bc-current">Kathmandu-3</span>
+      </div>
+      <div class="sc-wrap">
+        <span class="sc-icon">⌕</span>
+        <input class="sc-input" type="text" id="sc-inp" placeholder="Jump to constituency…" autocomplete="off"/>
+        <div class="sc-drop" id="sc-drop"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-content" style="padding-top:20px">
+    <div class="hero anim a1">
+      <div class="hero-top">
+        <div>
+          <div class="hero-h1" id="hero-h1">—</div>
+          <div class="hero-chips" id="hero-chips"></div>
+        </div>
+        <div class="hero-right">
+          <div class="hero-pre-badge">⏳ Pre-Election</div>
+          <div class="hero-updated">Election: <strong>5 March 2026</strong></div>
+          <div class="hero-updated" style="margin-top:3px">Falgun 21, 2082 BS</div>
+        </div>
+      </div>
+      <div class="hero-bar-row">
+        <span class="hb-label">Votes Counted</span>
+        <div class="hb-track"><div class="hb-fill"></div></div>
+        <span class="hb-pct">0%</span>
+        <span class="hb-detail">Counting not started</span>
+      </div>
+      <div class="hero-waiting">
+        <div class="hw-icon">🗳</div>
+        <div class="hw-text">
+          <h3>Awaiting Falgun 21, 2082 BS — 5 March 2026</h3>
+          <p>Candidate data below is verified from the ECN and Nepali media. Vote counts will appear here once counting begins after 5PM election day.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <div class="section-head"><h2 id="cands-head">Candidates</h2><span>Votes: 0 · Not yet voted</span></div>
+        <div class="cand-list" id="cand-list"></div>
+        <div class="prev-section">
+          <div class="section-head" style="margin-bottom:12px"><h2>2079 BS Result</h2><span>Previous election reference</span></div>
+          <div id="prev-list"></div>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="widget anim a2">
+          <div class="widget-header"><h3>Constituency Facts</h3></div>
+          <div class="facts-list" id="facts-list"></div>
+        </div>
+        <div class="widget anim a3">
+          <div class="widget-header"><h3>Data Sources</h3><span>Verified</span></div>
+          <div style="padding:10px 14px;display:flex;flex-direction:column;gap:7px">
+            <div style="display:flex;align-items:center;gap:7px;font-size:12px"><span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:2px;background:#fef3c7;color:#92400e">Official</span><span>Election Commission Nepal</span></div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:12px"><span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:2px;background:#e0e7ff;color:#3730a3">Media</span><span>Kathmandu Post</span></div>
+            <div style="display:flex;align-items:center;gap:7px;font-size:12px"><span style="font-size:10px;font-weight:700;padding:2px 7px;border-radius:2px;background:#e0e7ff;color:#3730a3">Media</span><span>Onlinekhabar · Khabarhub</span></div>
+            <p style="font-size:10px;color:var(--ink-3);padding-top:4px;line-height:1.5">Candidate data confirmed from ECN official nominations filed Jan 2026.</p>
+          </div>
+        </div>
+        <div class="widget anim a4">
+          <div class="widget-header"><h3>Nearby Constituencies</h3></div>
+          <div id="nearby-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     PAGE 3: PR DASHBOARD
+═══════════════════════════════════════════════════ -->
+<div id="page-pr" class="page">
+  <div class="page-content">
+
+    <div class="pr-page-title anim a1">
+      <h1>Proportional Representation
+        <em>समानुपातिक निर्वाचन — 2082 BS / 2026 AD</em>
+      </h1>
+      <div class="pr-meta">
+        <p>Election: <strong>5 March 2026</strong></p>
+        <p>Registered voters: <strong>18,903,689</strong></p>
+        <p>Threshold: <strong>3% of valid PR votes</strong></p>
+      </div>
+    </div>
+
+    <div class="pre-notice anim a1">
+      <div class="icon">⏳</div>
+      <div>
+        <h4>PR results will populate after Election Day — Falgun 21, 2082 BS</h4>
+        <p>All PR vote counts are 0. Party registration data and the 2079 BS reference results are shown. Nepal uses the <strong>Webster method (first divisor 1.4)</strong> to allocate the 110 PR seats among qualifying parties. Only parties crossing <strong>3% of valid votes</strong> qualify as national parties and receive PR seats.</p>
+      </div>
+    </div>
+
+    <div class="stat-row anim a2" id="pr-stats"></div>
+
+    <div class="section-head anim a3">
+      <h2>Registered Parties — PR Vote Tracker</h2>
+      <span>All 2082 votes at 0 · 2079 BS reference shown</span>
+    </div>
+    <div class="pr-table-card anim a3">
+      <table>
+        <thead><tr>
+          <th>#</th><th>Party</th><th>Nepali Name</th><th>Leader</th>
+          <th>2082 PR Votes</th><th>2082 Vote %</th><th>Projected Seats</th>
+          <th>2079 BS % (Ref.)</th><th>Nat. Party?</th>
+        </tr></thead>
+        <tbody id="pr-tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="section-head anim a4">
+      <h2>How PR Seat Allocation Works</h2>
+      <span>Nepal's proportional system</span>
+    </div>
+    <div class="thr-grid anim a4">
+      <div class="thr-box"><h4>1 — Cast Your PR Vote</h4><p>Each voter gets <strong>two ballot papers</strong>. The second is for a <strong>political party</strong>. This determines PR seat distribution nationally.</p></div>
+      <div class="thr-box"><h4>2 — 3% Threshold</h4><p>Only parties receiving <strong>≥ 3%</strong> of valid PR votes qualify as National Parties and receive proportional seats. Parties below 3% get zero PR seats.</p></div>
+      <div class="thr-box"><h4>3 — Webster Method</h4><p>The <strong>110 PR seats</strong> are allocated using the Webster/Sainte-Laguë method with <strong>first divisor 1.4</strong> — making it slightly harder for the smallest qualifying parties.</p></div>
+      <div class="thr-box"><h4>4 — Inclusivity Quota</h4><p>Each party's PR list must guarantee representation of <strong>women, Dalits, Janajatis, Madhesis, Tharus, Muslims</strong>, and other groups per Art. 84 of the Constitution.</p></div>
+    </div>
+    <div class="thr-note anim a4">
+      <span>⚠️</span>
+      <span><strong>New entrants to watch in 2082:</strong> Ujyalo Nepal Party (Kulman Ghising), Shram Sanskriti Party (Harka Sampang), and the merged Nepali Communist Party's PR share are all uncertain. Any party near the 3% line faces a threshold cliff — missing it means zero PR seats regardless of FPTP performance.</span>
+    </div>
+
+    <div class="section-head anim a5" style="margin-top:32px">
+      <h2>2079 BS Reference — PR Results</h2>
+      <span>Previous election · For comparison</span>
+    </div>
+    <div class="ref-section anim a5" id="ref-section"></div>
+
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<!-- ═══════════════════════════════════════════════════
+     DATA + JAVASCRIPT
+═══════════════════════════════════════════════════ -->
+<script>
+// ─────────────────────────────────────────────────────────────
+// REAL 2082 DATA — Sources: ECN, Kathmandu Post, Onlinekhabar,
+// Khabarhub, Wikipedia 2026 Nepal election article
+// ─────────────────────────────────────────────────────────────
+
+const PARTIES = [
+  { abbr:'NC',      color:'#174ea6', name:'Nepali Congress',                    ne:'नेपाली कांग्रेस',              leader:'Gagan Kumar Thapa',       pmcand:true,  prev2079pct:27.00, prevSeats:32 },
+  { abbr:'UML',     color:'#c0392b', name:'CPN (Unified Marxist-Leninist)',     ne:'एकीकृत माले',                  leader:'K.P. Sharma Oli',         pmcand:true,  prev2079pct:23.00, prevSeats:34 },
+  { abbr:'NCP',     color:'#6b0f1a', name:'Nepali Communist Party',             ne:'नेपाली कम्युनिस्ट पार्टी',    leader:'Pushpa Kamal Dahal',      pmcand:false, prev2079pct:null,  prevSeats:null, note:'New: Maoist Centre + others merged' },
+  { abbr:'RSP',     color:'#d4600a', name:'Rastriya Swatantra Party',           ne:'राष्ट्रिय स्वतन्त्र पार्टी', leader:'Balendra Shah',           pmcand:true,  prev2079pct:10.55, prevSeats:13 },
+  { abbr:'RPP',     color:'#1a7a40', name:'Rastriya Prajatantra Party',         ne:'राष्ट्रिय प्रजातन्त्र पार्टी',leader:'Rajendra Lingden',        pmcand:false, prev2079pct:5.56,  prevSeats:7  },
+  { abbr:'UNP',     color:'#0369a1', name:'Ujyalo Nepal Party',                 ne:'उज्यालो नेपाल पार्टी',        leader:'Kulman Ghising',          pmcand:false, prev2079pct:null,  prevSeats:null, note:'New 2025' },
+  { abbr:'PSP-N',   color:'#7c3aed', name:"People's Socialist Party, Nepal",    ne:'जनता समाजवादी पार्टी',        leader:'Upendra Yadav',           pmcand:false, prev2079pct:3.09,  prevSeats:3  },
+  { abbr:'Janamat', color:'#92400e', name:'Janamat Party',                      ne:'जनमत पार्टी',                  leader:'C.K. Raut',               pmcand:false, prev2079pct:1.29,  prevSeats:null, note:'Below threshold 2022' },
+  { abbr:'SSP',     color:'#78350f', name:'Shram Sanskriti Party',              ne:'श्रम संस्कृति पार्टी',        leader:'Harka Sampang Rai',       pmcand:false, prev2079pct:null,  prevSeats:null, note:'New 2025' },
+];
+
+const CONSTITUENCIES = [
+  // Koshi Province
+  { id:'Jhapa-1',   province:'Koshi',   district:'Jhapa',     voters:89200,  key:false,
+    cands:[{n:'Nabaraj Dahal',p:'NC',c:'#174ea6',i:'ND'},{n:'Radheshyam Adhikari',p:'UML',c:'#c0392b',i:'RA'},{n:'RSP Candidate',p:'RSP',c:'#d4600a',i:'RC'}],
+    prev:[{n:'NC Won 2079',p:'NC',c:'#174ea6',v:14200,w:true},{n:'UML Candidate',p:'UML',c:'#c0392b',v:10800,w:false}], nearby:['Jhapa-2','Jhapa-3','Jhapa-5'] },
+  { id:'Jhapa-2',   province:'Koshi',   district:'Jhapa',     voters:92100,  key:true, keyLbl:'Watch',
+    cands:[{n:'Devraj Ghimire',p:'UML',c:'#c0392b',i:'DG',incumbent:true},{n:'Ramesh Khatri',p:'NC',c:'#174ea6',i:'RK'},{n:'Indira Rana Magar',p:'RSP',c:'#d4600a',i:'IR'}],
+    prev:[{n:'Devraj Ghimire',p:'UML',c:'#c0392b',v:18400,w:true},{n:'NC Candidate',p:'NC',c:'#174ea6',v:13200,w:false}], nearby:['Jhapa-1','Jhapa-3','Jhapa-5'] },
+  { id:'Jhapa-3',   province:'Koshi',   district:'Jhapa',     voters:88400,  key:false,
+    cands:[{n:'Rajendra Lingden',p:'RPP',c:'#1a7a40',i:'RL',notable:true},{n:'NC Candidate',p:'NC',c:'#174ea6',i:'NC'},{n:'UML Candidate',p:'UML',c:'#c0392b',i:'UC'}],
+    prev:[{n:'Rajendra Lingden',p:'RPP',c:'#1a7a40',v:16100,w:true},{n:'NC Candidate',p:'NC',c:'#174ea6',v:11800,w:false}], nearby:['Jhapa-2','Jhapa-5'] },
+  { id:'Jhapa-5',   province:'Koshi',   district:'Jhapa',     voters:98700,  key:true, keyLbl:'Most Watched',
+    cands:[{n:'K.P. Sharma Oli',p:'UML',c:'#c0392b',i:'KO',pmcand:true,incumbent:true,notes:'Won 2022 with 52,319 votes; UML Chairman'},{n:'Balendra Shah',p:'RSP',c:'#d4600a',i:'BS',pmcand:true,notable:true,notes:'Former Ktm Mayor; RSP PM candidate'},{n:'Khagendra Adhikari',p:'NC',c:'#174ea6',i:'KA',notes:'Runner-up 2022 with 23,743 votes'}],
+    prev:[{n:'K.P. Sharma Oli',p:'UML',c:'#c0392b',v:52319,w:true},{n:'Khagendra Adhikari',p:'NC',c:'#174ea6',v:23743,w:false},{n:'Suresh K. Pokharel',p:'RSP',c:'#d4600a',v:11759,w:false}], nearby:['Jhapa-1','Jhapa-2','Jhapa-3'] },
+  { id:'Morang-6',  province:'Koshi',   district:'Morang',    voters:84300,  key:false,
+    cands:[{n:'Shekhar Koirala',p:'NC',c:'#174ea6',i:'SK',notable:true},{n:'UML Candidate',p:'UML',c:'#c0392b',i:'UC'},{n:'RSP Candidate',p:'RSP',c:'#d4600a',i:'RC'}],
+    prev:[{n:'NC Won 2079',p:'NC',c:'#174ea6',v:18200,w:true}], nearby:['Morang-1','Morang-2'] },
+  { id:'Sunsari-1', province:'Koshi',   district:'Sunsari',   voters:79800,  key:true, keyLbl:'Watch',
+    cands:[{n:'Harka Sampang Rai',p:'SSP',c:'#78350f',i:'HS',notable:true,notes:'Former Dharan Mayor; "Soil" election symbol'},{n:'NC Candidate',p:'NC',c:'#174ea6',i:'NC'},{n:'UML Candidate',p:'UML',c:'#c0392b',i:'UC'}],
+    prev:[{n:'NC Won 2079',p:'NC',c:'#174ea6',v:16400,w:true}], nearby:['Sunsari-2','Sunsari-3'] },
+  // Madhesh Province
+  { id:'Sarlahi-4', province:'Madhesh', district:'Sarlahi',   voters:71200,  key:true, keyLbl:'Watch',
+    cands:[{n:'Gagan Kumar Thapa',p:'NC',c:'#174ea6',i:'GT',pmcand:true,notes:'NC President; PM Candidate; moved from Ktm-4'},{n:'Amaresh Kumar Singh',p:'RSP',c:'#d4600a',i:'AS'},{n:'UML Candidate',p:'UML',c:'#c0392b',i:'UC'}],
+    prev:[{n:'NC Won 2079',p:'NC',c:'#174ea6',v:21000,w:true},{n:'UML Candidate',p:'UML',c:'#c0392b',v:14000,w:false}], nearby:['Sarlahi-3','Sarlahi-5'] },
+  { id:'Saptari-2', province:'Madhesh', district:'Saptari',   voters:68400,  key:false,
+    cands:[{n:'C.K. Raut',p:'Janamat',c:'#92400e',i:'CR',notable:true},{n:'NC Candidate',p:'NC',c:'#174ea6',i:'NC'},{n:'UML Candidate',p:'UML',c:'#c0392b',i:'UC'}],
+    prev:[{n:'C.K. Raut',p:'Janamat',c:'#92400e',v:15200,w:true}], nearby:['Saptari-1','Saptari-3'] },
+  // Bagmati Province
+  { id:'Kathmandu-1',  province:'Bagmati', district:'Kathmandu', voters:91800,  key:true, keyLbl:'Watch',
+    cands:[{n:'Prabal Thapa',p:'NC',c:'#174ea6',i:'PT'},{n:'Mohan Regmi',p:'UML',c:'#c0392b',i:'MR'},{n:'Ranju Darshana',p:'RSP',c:'#d4600a',i:'RD',incumbent:true},{n:'Rabindra Mishra',p:'RPP',c:'#1a7a40',i:'RM',notable:true}],
+    prev:[{n:'Ranju Darshana',p:'RSP',c:'#d4600a',v:16200,w:true},{n:'NC Candidate',p:'NC',c:'#174ea6',v:11800,w:false}], nearby:['Kathmandu-2','Kathmandu-3','Kathmandu-4','Kathmandu-5'] },
+  { id:'Kathmandu-2',  province:'Bagmati', district:'Kathmandu', voters:88200,  key:false,
+    cands:[{n:'Kabir Sharma',p:'NC',c:'#174ea6',i:'KS'},{n:'UML Candidate',p:'UML',c:'#c0392b',i:'UC'},{n:'NCP Candidate',p:'NCP',c:'#6b0f1a',i:'NC'},{n:'RSP Candidate',p:'RSP',c:'#d4600a',i:'RC'}],
+    prev:[{n:'NC Won 2079',p:'NC',c:'#174ea6',v:14100,w:true},{n:'UML',p:'UML',c:'#c0392b',v:10200,w:false}], nearby:['Kathmandu-1','Kathmandu-3','Kathmandu-4'] },
+  { id:'Kathmandu-3',  province:'Bagmati', district:'Kathmandu', voters:85600,  key:true, keyLbl:'Watch',
+    cands:[{n:'Ramesh Aryal',p:'NC',c:'#174ea6',i:'RA',notes:'NC candidate'},{n:'Rameshwor Phuyal',p:'UML',c:'#c0392b',i:'RP',notes:'UML candidate'},{n:'Kulman Ghising',p:'UNP',c:'#0369a1',i:'KG',notable:true,notes:'Former Energy Minister; Ujyalo Nepal Party'},{n:'Raju Pandey',p:'RSP',c:'#d4600a',i:'RP2'}],
+    prev:[{n:'Agni Sapkota',p:'NCP (Maoist)',c:'#6b0f1a',v:14822,w:true},{n:'Bishnu Rijal',p:'NC',c:'#174ea6',v:12418,w:false},{n:'Biraj Bhakta Shrestha',p:'RSP',c:'#d4600a',v:11204,w:false}], nearby:['Kathmandu-1','Kathmandu-2','Kathmandu-4','Kathmandu-5','Kathmandu-6'] },
+  { id:'Kathmandu-4',  province:'Bagmati', district:'Kathmandu', voters:79400,  key:false,
+    cands:[{n:'Sachin Timilsina',p:'NC',c:'#174ea6',i:'ST',notes:'Gagan Thapa moved to Sarlahi-4'},{n:'UML Candidate',p:'UML',c:'#c0392b',i:'UC'},{n:'RSP Candidate',p:'RSP',c:'#d4600a',i:'RC'}],
+    prev:[{n:'Gagan Kumar Thapa',p:'NC',c:'#174ea6',v:18200,w:true},{n:'UML',p:'UML',c:'#c0392b',v:12400,w:false}], nearby:['Kathmandu-3','Kathmandu-5','Kathmandu-6'] },
+  { id:'Kathmandu-5',  province:'Bagmati', district:'Kathmandu', voters:75222,  key:true, keyLbl:'Watch',
+    cands:[{n:'Pradeep Paudel',p:'NC',c:'#174ea6',i:'PP',notes:'NC General Secretary'},{n:'Ishwar Pokharel',p:'UML',c:'#c0392b',i:'IP',incumbent:true,notes:'UML Senior VP'},{n:'Sasmit Pokhrel',p:'RSP',c:'#d4600a',i:'SP'},{n:'Kamal Thapa',p:'RPP',c:'#1a7a40',i:'KT',notable:true,notes:'Former Home Minister'}],
+    prev:[{n:'Ishwar Pokharel',p:'UML',c:'#c0392b',v:15800,w:true},{n:'Pradeep Paudel',p:'NC',c:'#174ea6',v:13200,w:false}], nearby:['Kathmandu-4','Kathmandu-6','Kathmandu-7'] },
+  { id:'Kathmandu-6',  province:'Bagmati', district:'Kathmandu', voters:67735,  key:true, keyLbl:'Watch',
+    cands:[{n:'Krishna Baniya',p:'NC',c:'#174ea6',i:'KB'},{n:'Aman Maskey',p:'UML',c:'#c0392b',i:'AM'},{n:'Shishir Khanal',p:'RSP',c:'#d4600a',i:'SK',incumbent:true}],
+    prev:[{n:'Shishir Khanal',p:'RSP',c:'#d4600a',v:14221,w:true},{n:'UML',p:'UML',c:'#c0392b',v:8917,w:false}], nearby:['Kathmandu-5','Kathmandu-7','Kathmandu-8'] },
+  { id:'Kathmandu-7',  province:'Bagmati', district:'Kathmandu', voters:71300,  key:false,
+    cands:[{n:'Pramod Guragain',p:'NC',c:'#174ea6',i:'PG'},{n:'Prakash Shrestha',p:'UML',c:'#c0392b',i:'PS'},{n:'RSP Candidate',p:'RSP',c:'#d4600a',i:'RC'}],
+    prev:[{n:'UML Won 2079',p:'UML',c:'#c0392b',v:13400,w:true}], nearby:['Kathmandu-6','Kathmandu-8'] },
+  { id:'Kathmandu-8',  province:'Bagmati', district:'Kathmandu', voters:68900,  key:false,
+    cands:[{n:'Sapana Rajbhandari',p:'NC',c:'#174ea6',i:'SR'},{n:'Biraj Bhakta Shrestha',p:'RSP',c:'#d4600a',i:'BB'},{n:'UML Candidate',p:'UML',c:'#c0392b',i:'UC'}],
+    prev:[{n:'RSP Won 2079',p:'RSP',c:'#d4600a',v:12800,w:true}], nearby:['Kathmandu-7','Kathmandu-9'] },
+  { id:'Kathmandu-9',  province:'Bagmati', district:'Kathmandu', voters:70100,  key:false,
+    cands:[{n:'Nanu Bastola',p:'NC',c:'#174ea6',i:'NB'},{n:'Dolprasad Aryal',p:'RSP',c:'#d4600a',i:'DA'},{n:'UML Candidate',p:'UML',c:'#c0392b',i:'UC'}],
+    prev:[{n:'NC Won 2079',p:'NC',c:'#174ea6',v:13100,w:true}], nearby:['Kathmandu-8','Kathmandu-10'] },
+  { id:'Kathmandu-10', province:'Bagmati', district:'Kathmandu', voters:66800,  key:false,
+    cands:[{n:'Himal Karki',p:'NC',c:'#174ea6',i:'HK'},{n:'Chet Nath Sanjel',p:'UML',c:'#c0392b',i:'CS'},{n:'RSP Candidate',p:'RSP',c:'#d4600a',i:'RC'}],
+    prev:[{n:'NC Won 2079',p:'NC',c:'#174ea6',v:12900,w:true}], nearby:['Kathmandu-9','Lalitpur-1'] },
+  { id:'Lalitpur-1',  province:'Bagmati', district:'Lalitpur',  voters:82300,  key:false,
+    cands:[{n:'Uday Shumsher Rana',p:'NC',c:'#174ea6',i:'UR'},{n:'Prem Maharjan',p:'UML',c:'#c0392b',i:'PM'},{n:'Budda Ratna Maharjan',p:'RSP',c:'#d4600a',i:'BM'}],
+    prev:[{n:'NC Won 2079',p:'NC',c:'#174ea6',v:16200,w:true}], nearby:['Lalitpur-2','Lalitpur-3','Kathmandu-10'] },
+  { id:'Bhaktapur-1', province:'Bagmati', district:'Bhaktapur', voters:74600,  key:true, keyLbl:'Watch',
+    cands:[{n:'Kiran Neupane',p:'NC',c:'#174ea6',i:'KN'},{n:'Som Mishra',p:'UML',c:'#c0392b',i:'SM'},{n:'Rukesh Ranjit',p:'RSP',c:'#d4600a',i:'RR'}],
+    prev:[{n:'NCP Won 2079',p:'NCP',c:'#6b0f1a',v:14100,w:true},{n:'RSP',p:'RSP',c:'#d4600a',v:11200,w:false}], nearby:['Bhaktapur-2','Lalitpur-1'] },
+  { id:'Chitwan-2',  province:'Bagmati', district:'Chitwan',   voters:98200,  key:true, keyLbl:'Most Watched',
+    cands:[{n:'Rabi Lamichhane',p:'RSP',c:'#d4600a',i:'RL',incumbent:true,notable:true,notes:'RSP Chairman; won 2022 + by-election; 49,300 votes in 2022'},{n:'Mina Kharel',p:'NC',c:'#174ea6',i:'MK'},{n:'Ashwin Ghimire',p:'UML',c:'#c0392b',i:'AG'},{n:'Pratap Gurung',p:'NCP',c:'#6b0f1a',i:'PG'}],
+    prev:[{n:'Rabi Lamichhane',p:'RSP',c:'#d4600a',v:49300,w:true},{n:'Umesh Shrestha',p:'NC',c:'#174ea6',v:14988,w:false}], nearby:['Chitwan-1','Chitwan-3'] },
+  { id:'Chitwan-3',  province:'Bagmati', district:'Chitwan',   voters:94800,  key:true, keyLbl:'Watch',
+    cands:[{n:'Renu Dahal',p:'NCP',c:'#6b0f1a',i:'RD',notable:true,notes:"Prachanda's daughter; former Bharatpur Mayor"},{n:'Sobita Gautam',p:'RSP',c:'#d4600a',i:'SG'},{n:'NC Candidate',p:'NC',c:'#174ea6',i:'NC'}],
+    prev:[{n:'NC Won 2079',p:'NC',c:'#174ea6',v:17200,w:true}], nearby:['Chitwan-1','Chitwan-2'] },
+  { id:'Nuwakot-1',  province:'Bagmati', district:'Nuwakot',   voters:67200,  key:false,
+    cands:[{n:'Prakash Sharan Mahat',p:'NC',c:'#174ea6',i:'PM',notable:true},{n:'UML Candidate',p:'UML',c:'#c0392b',i:'UC'}],
+    prev:[{n:'NC Won 2079',p:'NC',c:'#174ea6',v:14100,w:true}], nearby:['Nuwakot-2'] },
+  // Gandaki Province
+  { id:'Tanahun-1',  province:'Gandaki', district:'Tanahun',   voters:76100,  key:true, keyLbl:'Watch',
+    cands:[{n:'Govinda Bhattarai',p:'NC',c:'#174ea6',i:'GB'},{n:'Bhagwati Neupane',p:'UML',c:'#c0392b',i:'BN'},{n:'Swarnim Wagle',p:'RSP',c:'#d4600a',i:'SW',notable:true}],
+    prev:[{n:'NC Won 2079',p:'NC',c:'#174ea6',v:16800,w:true}], nearby:['Tanahun-2','Gorkha-1'] },
+  { id:'Gorkha-2',   province:'Gandaki', district:'Gorkha',    voters:69800,  key:false,
+    cands:[{n:'Prakash Dawadi',p:'NC',c:'#174ea6',i:'PD'},{n:'Lekhnath Nyaupane',p:'NCP',c:'#6b0f1a',i:'LN'},{n:'Chakre Milan',p:'UML',c:'#c0392b',i:'CM'},{n:'Kabindra Burlakoti',p:'RSP',c:'#d4600a',i:'KB'}],
+    prev:[{n:'Prachanda',p:'Maoist/NC alliance',c:'#6b0f1a',v:26109,w:true},{n:'Kabindra Burlakoti',p:'RSP',c:'#d4600a',v:12639,w:false}], nearby:['Gorkha-1','Lamjung-1'] },
+  { id:'Myagdi-1',   province:'Gandaki', district:'Myagdi',    voters:48300,  key:true, keyLbl:'Watch',
+    cands:[{n:'Mahabir Pun',p:'IND',c:'#64748b',i:'MP',notable:true,notes:'Independent; prominent tech activist'},{n:'NC Candidate',p:'NC',c:'#174ea6',i:'NC'},{n:'UML Candidate',p:'UML',c:'#c0392b',i:'UC'}],
+    prev:[{n:'NC Won 2079',p:'NC',c:'#174ea6',v:12100,w:true}], nearby:['Parbat-1','Mustang-1'] },
+  // Lumbini Province
+  { id:'Rupandehi-2', province:'Lumbini', district:'Rupandehi', voters:88600,  key:false,
+    cands:[{n:'Bishnu Paudel',p:'UML',c:'#c0392b',i:'BP',notable:true,notes:'UML VP; former Finance Minister'},{n:'NC Candidate',p:'NC',c:'#174ea6',i:'NC'},{n:'RSP Candidate',p:'RSP',c:'#d4600a',i:'RC'}],
+    prev:[{n:'Bishnu Paudel',p:'UML',c:'#c0392b',v:22100,w:true}], nearby:['Rupandehi-1','Rupandehi-3'] },
+  // Karnali Province
+  { id:'Rukum East-1', province:'Karnali', district:'Rukum East', voters:52100, key:true, keyLbl:'Watch',
+    cands:[{n:'Pushpa Kamal Dahal',p:'NCP',c:'#6b0f1a',i:'PD',notable:true,notes:"'Prachanda'; NCP Coordinator; moved from Gorkha-2"},{n:'UML Candidate',p:'UML',c:'#c0392b',i:'UC'},{n:'NC Candidate',p:'NC',c:'#174ea6',i:'NC'}],
+    prev:[{n:'NCP Won 2079',p:'NCP',c:'#6b0f1a',v:14200,w:true}], nearby:['Rukum West-1'] },
+];
+
+const KEY_RACES = [
+  { id:'Jhapa-5', label:'Most Watched', labelCls:'badge-key', cands:['K.P. Sharma Oli (UML)','Balendra Shah (RSP)','Khagendra Adhikari (NC)'] },
+  { id:'Chitwan-2', label:'Watch', labelCls:'badge-watch', cands:['Rabi Lamichhane (RSP)','Mina Kharel (NC)','Ashwin Ghimire (UML)'] },
+  { id:'Sarlahi-4', label:'Watch', labelCls:'badge-watch', cands:['Gagan Thapa (NC)','Amaresh Singh (RSP)'] },
+  { id:'Kathmandu-3', label:'Watch', labelCls:'badge-watch', cands:['Ramesh Aryal (NC)','Rameshwor Phuyal (UML)','Kulman Ghising (UNP)','Raju Pandey (RSP)'] },
+  { id:'Kathmandu-5', label:'Watch', labelCls:'badge-watch', cands:['Pradeep Paudel (NC)','Ishwar Pokharel (UML)','Kamal Thapa (RPP)'] },
+];
+
+const LEADERS = [
+  { name:'Gagan Kumar Thapa', sub:'NC President', color:'#174ea6', const:'Sarlahi-4' },
+  { name:'K.P. Sharma Oli',   sub:'UML Chairman', color:'#c0392b', const:'Jhapa-5' },
+  { name:'Balendra Shah',     sub:'RSP PM Candidate', color:'#d4600a', const:'Jhapa-5' },
+  { name:'Rabi Lamichhane',   sub:'RSP Chairman', color:'#d4600a', const:'Chitwan-2' },
+  { name:'P.K. Dahal "Prachanda"', sub:'NCP Coordinator', color:'#6b0f1a', const:'Rukum East-1' },
+  { name:'Rajendra Lingden',  sub:'RPP Chair', color:'#1a7a40', const:'Jhapa-3' },
+  { name:'Kulman Ghising',    sub:'UNP Chair', color:'#0369a1', const:'Kathmandu-3' },
+  { name:'Pradeep Paudel',    sub:'NC General Sec.', color:'#174ea6', const:'Kathmandu-5' },
+  { name:'Ishwar Pokharel',   sub:'UML Senior VP', color:'#c0392b', const:'Kathmandu-5' },
+];
+
+const PROVINCES_SEATS = [
+  { name:'Koshi', seats:28 }, { name:'Madhesh', seats:32 },
+  { name:'Bagmati', seats:38 }, { name:'Gandaki', seats:22 },
+  { name:'Lumbini', seats:26 }, { name:'Karnali', seats:12 },
+  { name:'Sudurpashchim', seats:14 },
+];
+
+const REF_2079 = [
+  { abbr:'NC',  name:'Nepali Congress',            color:'#174ea6', pct:27.00, seats:32, above:true },
+  { abbr:'UML', name:'CPN (UML)',                  color:'#c0392b', pct:23.00, seats:34, above:true },
+  { abbr:'MC',  name:'CPN (Maoist Centre)',         color:'#6b0f1a', pct:11.70, seats:14, above:true, note:'Merged into NCP for 2082' },
+  { abbr:'RSP', name:'Rastriya Swatantra Party',   color:'#d4600a', pct:10.55, seats:13, above:true },
+  { abbr:'RPP', name:'Rastriya Prajatantra Party', color:'#1a7a40', pct:5.56,  seats:7,  above:true },
+  { abbr:'US',  name:'CPN (Unified Socialist)',    color:'#854d0e', pct:4.62,  seats:0,  above:true, note:'Merged into NCP for 2082' },
+  { abbr:'LSP', name:'Loktantrik Samajwadi Party', color:'#5b21b6', pct:3.91,  seats:0,  above:true },
+  { abbr:'PSP', name:"People's Socialist Party",   color:'#7c3aed', pct:3.09,  seats:3,  above:true },
+  { abbr:'Janamat', name:'Janamat Party',          color:'#92400e', pct:1.29,  seats:0,  above:false },
+];
+
+// ─────────────────────────────────────────────────────────────
+// SPA ROUTER
+// ─────────────────────────────────────────────────────────────
+let currentPage = 'dashboard';
+let currentConst = 'Kathmandu-3';
+
+function nav(page, constId) {
+  currentPage = page;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.getElementById('nav-' + page).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  if (page === 'constituency') {
+    if (constId) currentConst = constId;
+    renderConst();
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// PAGE 1: DASHBOARD RENDER
+// ─────────────────────────────────────────────────────────────
+let constVisible = 14;
+let constProvince = 'all';
+let constSearch = '';
+
+function renderDashboard() {
+  // Party grid
+  const pg = document.getElementById('party-grid');
+  pg.innerHTML = '';
+  PARTIES.forEach((p, i) => {
+    const d = document.createElement('div');
+    d.className = 'party-card anim a' + Math.min(i+2, 8);
+    d.style.borderTopColor = p.color;
+    d.innerHTML = `
+      <div class="p-abbr" style="color:${p.color}">${p.abbr}</div>
+      <div class="p-full">${LANG==='ne' ? p.ne : p.name}${p.note ? `<br><small style="font-size:10px;color:var(--ink-3)">${p.note}</small>` : ''}</div>
+      <div class="p-leader-lbl">${t('party_leader_lbl')}</div>
+      <div class="p-leader">${p.leader}</div>
+      <div class="p-seats">
+        <div class="p-seat-item"><div class="p-seat-num" style="color:${p.color}">0</div><div class="p-seat-lbl">${LANG==='ne'?'प्रत्यक्ष':'FPTP'}</div></div>
+        <div class="p-seat-item"><div class="p-seat-num" style="color:${p.color}">0</div><div class="p-seat-lbl">${LANG==='ne'?'समानु.':'PR'}</div></div>
+        <div class="p-seat-item"><div class="p-seat-num" style="color:${p.color}">0</div><div class="p-seat-lbl">${LANG==='ne'?'जम्मा':'Total'}</div></div>
+      </div>
+      ${p.pmcand ? `<div class="pm-tag">${t('party_pm_tag')}</div>` : ''}
+    `;
+    pg.appendChild(d);
+  });
+
+  // Key races widget
+  const krw = document.getElementById('key-races-widget');
+  krw.innerHTML = '';
+  KEY_RACES.forEach(kr => {
+    const div = document.createElement('div');
+    div.className = 'key-race';
+    const constData = CONSTITUENCIES.find(c => c.id === kr.id);
+    div.innerHTML = `
+      <div class="kr-title" onclick="nav('constituency','${kr.id}')">
+        ${kr.id} <span class="badge ${kr.labelCls}">${kr.label}</span>
+      </div>
+      ${(constData ? constData.cands : []).map(c =>
+        `<div class="kr-cand">
+          ${makeAvatar(c, 24)}
+          <span class="kr-name">${c.n}</span>
+          <span class="pill" style="background:${c.c}">${c.p}</span>
+          <span class="kr-votes">0</span>
+        </div>`
+      ).join('')}
+    `;
+    krw.appendChild(div);
+  });
+
+  // Leaders widget
+  const lw = document.getElementById('leaders-widget');
+  lw.innerHTML = '';
+  LEADERS.forEach(l => {
+    // Build a minimal candidate-like object for avatar generation
+    const fakeC = { i: l.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase(), c: l.color, n: l.name };
+    const div = document.createElement('div');
+    div.className = 'leader-row';
+    div.style.cursor = 'pointer';
+    div.innerHTML = `${makeAvatar(fakeC, 32)}<span class="leader-name">${l.name}<small>${l.sub}</small></span><span class="leader-const">${l.const}</span>`;
+    div.onclick = () => nav('constituency', l.const);
+    lw.appendChild(div);
+  });
+
+  // Provinces widget
+  const pw = document.getElementById('prov-widget');
+  pw.innerHTML = '';
+  PROVINCES_SEATS.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'prov-row';
+    div.innerHTML = `<span class="prov-name">${p.name} Province</span><span class="prov-seats">${p.seats} FPTP seats</span>`;
+    pw.appendChild(div);
+  });
+
+  renderConstTable();
+}
+
+function filterConst(q) { constSearch = q.toLowerCase(); constVisible = 14; renderConstTable(); }
+function filterProv(el, prov) {
+  document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active'); constProvince = prov; constVisible = 14; renderConstTable();
+}
+function showMore() { constVisible += 10; renderConstTable(); }
+
+function renderConstTable() {
+  const data = CONSTITUENCIES.filter(c => {
+    const ms = c.id.toLowerCase().includes(constSearch) || c.cands.some(cd => cd.n.toLowerCase().includes(constSearch));
+    const mp = constProvince === 'all' || c.province === constProvince;
+    return ms && mp;
+  });
+  const tbody = document.getElementById('const-tbody');
+  tbody.innerHTML = '';
+  data.slice(0, constVisible).forEach(c => {
+    const tr = document.createElement('tr');
+    const keyTag = c.key ? `<span class="badge ${c.keyLbl==='Most Watched'?'badge-key':'badge-watch'}" style="margin-left:5px">${LANG==='ne'?(c.keyLbl==='Most Watched'?'सबैभन्दा चर्चित':'हेर्नुहोस्'):c.keyLbl}</span>` : '';
+    const candsHtml = c.cands.slice(0,3).map(cd =>
+      `<div class="cand-line"><span class="cand-dot" style="background:${cd.c}"></span>${cd.n} <span class="pill" style="background:${cd.c};margin-left:3px">${cd.p}</span></div>`
+    ).join('') + (c.cands.length > 3 ? `<div style="font-size:10px;color:var(--ink-3);margin-top:2px">+${c.cands.length-3}${t('more_suffix')}</div>` : '');
+    tr.innerHTML = `
+      <td><span class="td-const-name">${c.id}${keyTag}<small>${provName(c.province)} · ${distName(c.district)}</small></span></td>
+      <td style="line-height:1.4">${candsHtml}</td>
+      <td><span class="mono" style="font-size:11px">${c.voters.toLocaleString()}</span></td>
+      <td><span class="votes-zero">${t('votes_zero')}</span></td>
+    `;
+    tr.onclick = () => nav('constituency', c.id);
+    tbody.appendChild(tr);
+  });
+  document.getElementById('show-more').style.display = constVisible >= data.length ? 'none' : 'block';
+}
+
+// ─────────────────────────────────────────────────────────────
+// AVATAR SYSTEM
+// Each candidate gets a unique deterministic SVG illustration.
+// If c.photo is set to a URL, a real <img> is shown instead.
+// To add a real photo: set photo:'https://...' in the candidate object.
+// ─────────────────────────────────────────────────────────────
+function makeAvatar(c, size = 56) {
+  // If real photo provided, use it
+  if (c.photo) {
+    return `<div class="cand-avatar" style="width:${size}px;height:${size}px">
+      <img src="${c.photo}" alt="${c.n}" onerror="this.parentElement.innerHTML=makeSVGAvatar('${c.i}','${c.c}',${size})">
+    </div>`;
+  }
+  return `<div class="cand-avatar" style="width:${size}px;height:${size}px">${makeSVGAvatar(c.i, c.c, size, c.n)}</div>`;
+}
+
+function makeSVGAvatar(initials, color, size, name = '') {
+  // Deterministic seed from name for unique-but-stable patterns
+  const seed = (name + initials).split('').reduce((a, ch) => a + ch.charCodeAt(0), 0);
+  const r = (offset = 0) => ((seed + offset) * 2654435761) >>> 0;
+
+  // Derive light/dark variant of party color
+  const hex = color.replace('#','');
+  const ri = parseInt(hex.slice(0,2),16), gi = parseInt(hex.slice(2,4),16), bi = parseInt(hex.slice(4,6),16);
+  const lighten = (v, amt) => Math.min(255, v + amt);
+  const darken  = (v, amt) => Math.max(0, v - amt);
+  const toHex = (r,g,b) => '#' + [r,g,b].map(v => v.toString(16).padStart(2,'0')).join('');
+
+  const lightColor = toHex(lighten(ri,60), lighten(gi,60), lighten(bi,60));
+  const darkColor  = toHex(darken(ri,30),  darken(gi,30),  darken(bi,30));
+  const accentColor= toHex(lighten(ri,100),lighten(gi,90), lighten(bi,80));
+  const midColor   = toHex(lighten(ri,30), lighten(gi,30), lighten(bi,30));
+
+  const cx = size / 2, cy = size / 2, rad = size / 2;
+
+  // Pattern variant: 0-5 based on seed
+  const variant = r(7) % 6;
+
+  // Geometric shape elements — deterministic but diverse
+  const shapes = {
+    // Variant 0: Diagonal stripes + geometric head
+    0: `
+      <defs>
+        <clipPath id="cp${seed}"><circle cx="${cx}" cy="${cy}" r="${rad}"/></clipPath>
+        <linearGradient id="bg${seed}" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="${color}"/>
+          <stop offset="100%" stop-color="${darkColor}"/>
+        </linearGradient>
+      </defs>
+      <circle cx="${cx}" cy="${cy}" r="${rad}" fill="url(#bg${seed})"/>
+      <g clip-path="url(#cp${seed})">
+        ${[0,1,2,3,4].map(i=>`<line x1="${-size+i*size*0.4}" y1="0" x2="${i*size*0.4}" y2="${size}" stroke="${lightColor}" stroke-width="4" stroke-opacity="0.25"/>`).join('')}
+        <ellipse cx="${cx}" cy="${cy*0.82}" rx="${size*0.22}" ry="${size*0.24}" fill="${lightColor}" opacity="0.95"/>
+        <ellipse cx="${cx}" cy="${cy*1.6}" rx="${size*0.32}" ry="${size*0.25}" fill="${lightColor}" opacity="0.85"/>
+        <circle  cx="${cx}" cy="${cy*0.78}" r="${size*0.14}" fill="${accentColor}" opacity="0.7"/>
+      </g>`,
+
+    // Variant 1: Radial burst + silhouette
+    1: `
+      <defs>
+        <clipPath id="cp${seed}"><circle cx="${cx}" cy="${cy}" r="${rad}"/></clipPath>
+        <radialGradient id="bg${seed}" cx="40%" cy="35%">
+          <stop offset="0%" stop-color="${midColor}"/>
+          <stop offset="100%" stop-color="${darkColor}"/>
+        </radialGradient>
+      </defs>
+      <circle cx="${cx}" cy="${cy}" r="${rad}" fill="url(#bg${seed})"/>
+      <g clip-path="url(#cp${seed})">
+        ${[0,1,2,3,4,5,6,7].map(i=>{
+          const a = i * Math.PI/4;
+          return `<line x1="${cx}" y1="${cy}" x2="${cx+Math.cos(a)*size}" y2="${cy+Math.sin(a)*size}" stroke="${lightColor}" stroke-width="3" stroke-opacity="0.18"/>`;
+        }).join('')}
+        <circle cx="${cx}" cy="${cy*0.8}" r="${size*0.21}" fill="${lightColor}" opacity="0.9"/>
+        <path d="M${cx-size*0.28},${size} Q${cx},${cy*1.15} ${cx+size*0.28},${size}" fill="${lightColor}" opacity="0.85"/>
+        <circle cx="${cx}" cy="${cy*0.75}" r="${size*0.12}" fill="${accentColor}" opacity="0.6"/>
+      </g>`,
+
+    // Variant 2: Grid dots + portrait
+    2: `
+      <defs>
+        <clipPath id="cp${seed}"><circle cx="${cx}" cy="${cy}" r="${rad}"/></clipPath>
+        <linearGradient id="bg${seed}" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${midColor}"/>
+          <stop offset="100%" stop-color="${darkColor}"/>
+        </linearGradient>
+      </defs>
+      <circle cx="${cx}" cy="${cy}" r="${rad}" fill="url(#bg${seed})"/>
+      <g clip-path="url(#cp${seed})">
+        ${[0,1,2,3,4].flatMap(row=>[0,1,2,3,4].map(col=>
+          `<circle cx="${col*size*0.25}" cy="${row*size*0.25}" r="1.5" fill="${lightColor}" opacity="0.2"/>`
+        )).join('')}
+        <ellipse cx="${cx}" cy="${cy*0.83}" rx="${size*0.2}" ry="${size*0.22}" fill="${lightColor}" opacity="0.92"/>
+        <path d="M${cx-size*0.3},${size*0.92} C${cx-size*0.3},${cy*1.2} ${cx+size*0.3},${cy*1.2} ${cx+size*0.3},${size*0.92}" fill="${lightColor}" opacity="0.85"/>
+        <ellipse cx="${cx}" cy="${cy*0.8}" rx="${size*0.11}" ry="${size*0.08}" fill="${darkColor}" opacity="0.4"/>
+      </g>`,
+
+    // Variant 3: Halftone circles + figure
+    3: `
+      <defs>
+        <clipPath id="cp${seed}"><circle cx="${cx}" cy="${cy}" r="${rad}"/></clipPath>
+        <linearGradient id="bg${seed}" x1="1" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${color}"/>
+          <stop offset="100%" stop-color="${darkColor}"/>
+        </linearGradient>
+      </defs>
+      <circle cx="${cx}" cy="${cy}" r="${rad}" fill="url(#bg${seed})"/>
+      <g clip-path="url(#cp${seed})">
+        ${[6,10,14,10,6].map((cols,row)=>
+          Array.from({length:cols},(_,col)=>{
+            const dotR = 2 + (col+row)%3;
+            return `<circle cx="${(col/(cols-1))*size}" cy="${row*size/5}" r="${dotR}" fill="${lightColor}" opacity="0.15"/>`;
+          }).join('')
+        ).join('')}
+        <circle cx="${cx}" cy="${cy*0.78}" r="${size*0.21}" fill="${lightColor}" opacity="0.93"/>
+        <ellipse cx="${cx}" cy="${cy*1.55}" rx="${size*0.3}" ry="${size*0.22}" fill="${lightColor}" opacity="0.85"/>
+        <circle cx="${cx-size*0.07}" cy="${cy*0.74}" r="${size*0.055}" fill="${darkColor}" opacity="0.45"/>
+        <circle cx="${cx+size*0.07}" cy="${cy*0.74}" r="${size*0.055}" fill="${darkColor}" opacity="0.45"/>
+      </g>`,
+
+    // Variant 4: Triangular facets + portrait
+    4: `
+      <defs>
+        <clipPath id="cp${seed}"><circle cx="${cx}" cy="${cy}" r="${rad}"/></clipPath>
+      </defs>
+      <circle cx="${cx}" cy="${cy}" r="${rad}" fill="${darkColor}"/>
+      <g clip-path="url(#cp${seed})">
+        <polygon points="${cx},0 ${size},${cy} ${cx},${size}" fill="${color}" opacity="0.7"/>
+        <polygon points="0,0 ${cx},0 0,${cy}" fill="${midColor}" opacity="0.8"/>
+        <polygon points="${size},${cy} ${size},${size} ${cx},${size}" fill="${midColor}" opacity="0.6"/>
+        <polygon points="0,${cy} ${cx},${size} 0,${size}" fill="${lightColor}" opacity="0.3"/>
+        <circle cx="${cx}" cy="${cy*0.8}" r="${size*0.21}" fill="${lightColor}" opacity="0.93"/>
+        <ellipse cx="${cx}" cy="${cy*1.58}" rx="${size*0.29}" ry="${size*0.23}" fill="${lightColor}" opacity="0.87"/>
+      </g>`,
+
+    // Variant 5: Concentric rings + silhouette  
+    5: `
+      <defs>
+        <clipPath id="cp${seed}"><circle cx="${cx}" cy="${cy}" r="${rad}"/></clipPath>
+        <radialGradient id="bg${seed}" cx="50%" cy="50%">
+          <stop offset="0%" stop-color="${midColor}"/>
+          <stop offset="100%" stop-color="${darkColor}"/>
+        </radialGradient>
+      </defs>
+      <circle cx="${cx}" cy="${cy}" r="${rad}" fill="url(#bg${seed})"/>
+      <g clip-path="url(#cp${seed})">
+        ${[0.9,0.7,0.5,0.3].map(s=>`<circle cx="${cx}" cy="${cy}" r="${rad*s}" fill="none" stroke="${lightColor}" stroke-width="1.5" stroke-opacity="0.18"/>`).join('')}
+        <circle cx="${cx}" cy="${cy*0.79}" r="${size*0.22}" fill="${lightColor}" opacity="0.93"/>
+        <path d="M${cx-size*0.31},${size} Q${cx-size*0.1},${cy*1.22} ${cx},${cy*1.18} Q${cx+size*0.1},${cy*1.22} ${cx+size*0.31},${size}" fill="${lightColor}" opacity="0.86"/>
+      </g>`,
+  };
+
+  const svgContent = shapes[variant];
+
+  // Initials text overlay, always on top
+  const fontSize = size * 0.28;
+  const initialsOverlay = `<text x="${cx}" y="${cy*0.87}" text-anchor="middle" dominant-baseline="central"
+    font-family="'Playfair Display', serif" font-size="${fontSize}" font-weight="700"
+    fill="white" opacity="0.0">${initials}</text>`;
+  // Note: initials hidden (opacity 0) because the illustrated face replaces them
+  // but kept in DOM for accessibility / fallback
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
+    ${svgContent}
+    <text x="${cx}" y="${size - size*0.14}" text-anchor="middle"
+      font-family="'DM Mono', monospace" font-size="${size*0.17}" font-weight="700"
+      fill="white" opacity="0.75" letter-spacing="0.5">${initials}</text>
+  </svg>`;
+}
+
+// ─────────────────────────────────────────────────────────────
+// PAGE 2: CONSTITUENCY DETAIL RENDER
+// ─────────────────────────────────────────────────────────────
+function renderConst() {
+  const d = CONSTITUENCIES.find(c => c.id === currentConst);
+  if (!d) return;
+
+  document.getElementById('bc-prov').textContent = provName(d.province);
+  document.getElementById('bc-name').textContent = d.id;
+  document.getElementById('hero-h1').textContent = LANG==='ne'
+    ? `${distName(d.district)} निर्वाचन क्षेत्र नं. ${d.id.split('-')[1]} — ${d.id}`
+    : `${d.district} Constituency No. ${d.id.split('-')[1]} — ${d.id}`;
+  document.getElementById('cands-head').textContent = `${t('cands_head_pfx')} ${d.id}`;
+
+  document.getElementById('hero-chips').innerHTML = `
+    <span class="chip">📍 ${provName(d.province)} ${LANG==='ne'?'प्रदेश':'Province'}</span>
+    <span class="chip">🏛 ${distName(d.district)} ${LANG==='ne'?'जिल्ला':'District'}</span>
+    <span class="chip">👥 ${d.voters.toLocaleString()} ${LANG==='ne'?'दर्ता मतदाता':'Registered Voters'}</span>
+    <span class="chip">🗳 ${LANG==='ne'?'प्रत्यक्ष — संघीय':'FPTP — Federal'}</span>
+    <span class="chip">👤 ${d.cands.length} ${LANG==='ne'?'उम्मेदवार':'Candidates'}</span>
+    ${d.key ? `<span class="badge ${d.keyLbl==='Most Watched'?'badge-key':'badge-watch'}" style="margin:0">${LANG==='ne'?(d.keyLbl==='Most Watched'?'सबैभन्दा चर्चित':'हेर्नुहोस्'):d.keyLbl}</span>` : ''}
+  `;
+
+  // Facts
+  document.getElementById('facts-list').innerHTML = `
+    <div class="fact-row"><span class="fact-label">${t('fact_no')}</span><span class="fact-val">${d.id.split('-')[1].padStart(2,'0')}</span></div>
+    <div class="fact-row"><span class="fact-label">${t('fact_prov')}</span><span class="fact-val" style="font-family:'DM Sans',sans-serif">${provName(d.province)}</span></div>
+    <div class="fact-row"><span class="fact-label">${t('fact_dist')}</span><span class="fact-val" style="font-family:'DM Sans',sans-serif">${distName(d.district)}</span></div>
+    <div class="fact-row"><span class="fact-label">${t('fact_voters')}</span><span class="fact-val">${d.voters.toLocaleString()}</span></div>
+    <div class="fact-row"><span class="fact-label">${t('fact_total_cands')}</span><span class="fact-val">${d.cands.length}</span></div>
+    <div class="fact-row"><span class="fact-label">${t('fact_votes_cast')}</span><span class="fact-val" style="color:var(--pre)">${t('fact_votes_val')}</span></div>
+    <div class="fact-row"><span class="fact-label">${t('fact_turnout')}</span><span class="fact-val" style="color:var(--pre)">${t('fact_turnout_val')}</span></div>
+    <div class="fact-row"><span class="fact-label">${t('fact_date')}</span><span class="fact-val" style="font-family:'DM Sans',sans-serif;font-size:11px">${t('fact_date_val')}</span></div>
+  `;
+
+  // Candidate cards
+  const cl = document.getElementById('cand-list');
+  cl.innerHTML = '';
+  d.cands.forEach((c, i) => {
+    const badges = [];
+    if (c.pmcand)    badges.push(`<span class="badge badge-pm">${t('badge_pm')}</span>`);
+    if (c.incumbent) badges.push(`<span class="badge badge-incumbent">${t('badge_incumbent')}</span>`);
+    if (c.notable)   badges.push(`<span class="badge badge-notable">${t('badge_notable')}</span>`);
+    if (!c.pmcand && !c.incumbent && !c.notable) badges.push(`<span class="badge badge-pre">${t('badge_awaiting')}</span>`);
+    const notesHtml = c.notes ? `<span style="font-size:10px;color:var(--ink-3);margin-left:6px">· ${c.notes}</span>` : '';
+    const card = document.createElement('div');
+    card.className = 'cand-card';
+    card.innerHTML = `
+      <div class="cand-top">
+        <span class="cand-num">${i+1}</span>
+        ${makeAvatar(c, 56)}
+        <div class="cand-info">
+          <div class="cand-name">${c.n}</div>
+          <div class="cand-party" style="color:${c.c}">${c.p} <span class="cand-party-full">— ${PARTIES.find(p=>p.abbr===c.p)?.name || c.p}</span></div>
+        </div>
+        <div class="cand-votes"><div class="cand-votes-num">0</div><div class="cand-votes-lbl">${t('votes_lbl')}</div></div>
+      </div>
+      <div class="cand-meta">${badges.join('')}${notesHtml}</div>
+    `;
+    card.onclick = () => toast(`${c.n} (${c.p}) — ${t('toast_cand')}`);
+    cl.appendChild(card);
+  });
+
+  // Prev results
+  const pl = document.getElementById('prev-list');
+  pl.innerHTML = '';
+  const maxV = Math.max(...d.prev.map(p => p.v));
+  d.prev.forEach(p => {
+    const row = document.createElement('div');
+    row.className = 'prev-row';
+    row.innerHTML = `
+      <span class="prev-dot" style="background:${p.c}"></span>
+      <span class="prev-name">${p.n}<small>${p.p}</small>
+        <div class="prev-bar-wrap"><div class="prev-bar-fill" style="width:${(p.v/maxV*100).toFixed(1)}%;background:${p.c}"></div></div>
+      </span>
+      <span class="prev-votes">${p.v.toLocaleString()}</span>
+      ${p.w ? `<span class="badge badge-won" style="margin-left:6px">${t('badge_won')}</span>` : ''}
+    `;
+    pl.appendChild(row);
+  });
+
+  // Nearby
+  const nl = document.getElementById('nearby-list');
+  nl.innerHTML = '';
+  (d.nearby || []).forEach(name => {
+    const nd = CONSTITUENCIES.find(c => c.id === name);
+    const row = document.createElement('div');
+    row.className = 'nearby-row';
+    row.innerHTML = `<span class="nearby-name">${name}<small>${nd ? distName(nd.district) + ' · ' + nd.voters.toLocaleString() + ' ' + t('nearby_data') : t('nearby_coming')}</small></span><span style="color:var(--pre);font-size:11px;font-weight:700">→</span>`;
+    row.onclick = () => { currentConst = name; renderConst(); window.scrollTo({top:0,behavior:'smooth'}); };
+    nl.appendChild(row);
+  });
+}
+
+// Constituency search
+function setupConstSearch() {
+  const inp = document.getElementById('sc-inp');
+  const drop = document.getElementById('sc-drop');
+  const ALL = CONSTITUENCIES.map(c => c.id);
+
+  inp.addEventListener('input', () => {
+    const q = inp.value.toLowerCase();
+    const matches = q ? ALL.filter(n => n.toLowerCase().includes(q)) : ALL.slice(0, 10);
+    drop.innerHTML = '';
+    matches.slice(0, 10).forEach(name => {
+      const nd = CONSTITUENCIES.find(c => c.id === name);
+      const item = document.createElement('div');
+      item.className = 'sc-item';
+      item.innerHTML = `<strong>${name}</strong><span>${nd ? nd.province : ''}</span>`;
+      item.onclick = () => { inp.value = ''; drop.classList.remove('open'); currentConst = name; renderConst(); };
+      drop.appendChild(item);
+    });
+    drop.classList.toggle('open', matches.length > 0);
+  });
+
+  document.addEventListener('click', e => { if (!e.target.closest('.sc-wrap')) drop.classList.remove('open'); });
+}
+
+// ─────────────────────────────────────────────────────────────
+// PAGE 3: PR RENDER
+// ─────────────────────────────────────────────────────────────
+function renderPR() {
+  // Stat cards
+  const stats = [
+    { label:t('stat_pr_seats'), num:'110', sub:t('stat_pr_seats_sub') },
+    { label:t('stat_threshold'), num:'3%', sub:t('stat_threshold_sub') },
+    { label:t('stat_voters'), num:'18.9M', sub:t('stat_voters_sub') },
+    { label:t('stat_parties'), num:'68', sub:t('stat_parties_sub') },
+    { label:t('stat_counted'), num:'0', sub:t('stat_counted_sub'), color:'var(--pre)' },
+  ];
+  const sr = document.getElementById('pr-stats');
+  sr.innerHTML = '';
+  stats.forEach((s, i) => {
+    const d = document.createElement('div');
+    d.className = `stat-card anim a${i+2}`;
+    d.innerHTML = `<div class="stat-label">${s.label}</div><div class="stat-num" style="${s.color?`color:${s.color}`:''}">${s.num}</div><div class="stat-sub">${s.sub}</div>`;
+    sr.appendChild(d);
+  });
+
+  // PR page title — rebuild via JS since it's static HTML
+  const prt = document.querySelector('.pr-page-title');
+  if(prt) prt.innerHTML = `
+    <h1>${t('pr_title')}<em>${t('pr_subtitle')}</em></h1>
+    <div class="pr-meta">
+      <p>${t('pr_election')} <strong>5 March 2026</strong></p>
+      <p>${t('pr_voters')} <strong>18,903,689</strong></p>
+      <p>${t('pr_threshold')} <strong>${t('pr_threshold_val')}</strong></p>
+    </div>`;
+
+  // PR notice
+  const prn = document.querySelector('#page-pr .pre-notice');
+  if(prn) prn.innerHTML = `
+    <div class="icon">⏳</div>
+    <div><h4>${t('pr_notice_title')}</h4><p>${t('pr_notice_body')}</p></div>`;
+
+  // PR section heads
+  const prSH = document.querySelectorAll('#page-pr .section-head');
+  if(prSH[0]) prSH[0].innerHTML = `<h2>${t('pr_table_title')}</h2><span>${t('pr_table_sub')}</span>`;
+  if(prSH[1]) prSH[1].innerHTML = `<h2>${t('pr_how_title')}</h2><span>${t('pr_how_sub')}</span>`;
+  if(prSH[2]) prSH[2].innerHTML = `<h2>${t('ref_title')}</h2><span>${t('ref_sub')}</span>`;
+
+  // How-it-works boxes
+  const thrBoxes = document.querySelectorAll('.thr-box');
+  if(thrBoxes[0]) thrBoxes[0].innerHTML = `<h4>${t('pr_step1_title')}</h4><p>${t('pr_step1')}</p>`;
+  if(thrBoxes[1]) thrBoxes[1].innerHTML = `<h4>${t('pr_step2_title')}</h4><p>${t('pr_step2')}</p>`;
+  if(thrBoxes[2]) thrBoxes[2].innerHTML = `<h4>${t('pr_step3_title')}</h4><p>${t('pr_step3')}</p>`;
+  if(thrBoxes[3]) thrBoxes[3].innerHTML = `<h4>${t('pr_step4_title')}</h4><p>${t('pr_step4')}</p>`;
+  const thrNote = document.querySelector('.thr-note');
+  if(thrNote) thrNote.innerHTML = `<span>⚠️</span><span>${t('pr_warning')}</span>`;
+
+  // PR table headers
+  const prThs = document.querySelectorAll('.pr-table-card thead th');
+  const prCols = ['col_rank','col_party','col_ne','col_leader','col_votes82','col_pct82','col_proj','col_ref79','col_nat'];
+  prThs.forEach((th,i) => { if(prCols[i]) th.textContent = t(prCols[i]); });
+
+
+  // PR table body
+  const tbody = document.getElementById('pr-tbody');
+  tbody.innerHTML = '';
+  PARTIES.forEach((p, i) => {
+    const refBar = p.prev2079pct != null
+      ? `<div class="ref-bar-wrap"><div class="ref-bar-fill" style="width:${(p.prev2079pct/30*100).toFixed(0)}%;background:${p.color}"></div></div><span class="mono" style="font-size:11px;color:var(--ink-3)">${p.prev2079pct.toFixed(2)}%</span>`
+      : `<span style="font-size:11px;color:var(--ink-3)">${t('new_party')}</span>`;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td class="mono" style="color:var(--ink-3)">${i+1}</td>
+      <td><strong style="color:${p.color}">${p.abbr}</strong> <span style="font-size:11px;color:var(--ink-2)">— ${LANG==='ne'?p.ne:p.name}</span>${p.note?`<br><small style="color:var(--ink-3);font-size:10px">${p.note}</small>`:''}</td>
+      <td style="font-size:12px;color:var(--ink-3)">${p.ne}</td>
+      <td style="font-size:12px">${p.leader}</td>
+      <td><span class="zero-pre">${t('awaiting_election')}</span></td>
+      <td><span class="zero-pre">0.00%</span></td>
+      <td><span style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--ink-3)">—</span></td>
+      <td>${refBar}</td>
+      <td><span style="font-size:10px;color:var(--ink-3)">${t('pending')}</span></td>
+    `;
+    tr.onclick = () => toast(`${LANG==='ne'?p.ne:p.name} — ${t('toast_pr')}`);
+    tbody.appendChild(tr);
+  });
+
+  // 2079 reference
+  const ref = document.getElementById('ref-section');
+  ref.innerHTML = '';
+  const maxPct = Math.max(...REF_2079.map(r => r.pct));
+  REF_2079.forEach(r => {
+    const row = document.createElement('div');
+    row.className = 'ref-row';
+    row.innerHTML = `
+      <span class="ref-dot" style="background:${r.color}"></span>
+      <span class="ref-name">${r.abbr} — ${r.name}${r.note?`<small>${r.note}</small>`:''}</span>
+      <div class="ref-bar-h"><div class="ref-bar-hbg"><div class="ref-bar-hfill" style="width:${(r.pct/maxPct*100).toFixed(1)}%;background:${r.color}"></div></div></div>
+      <span class="ref-pct" style="color:${r.color}">${r.pct.toFixed(2)}%</span>
+      <span class="ref-seats">${r.seats ? r.seats+t('seats_suffix') : '0'+t('seats_suffix')}</span>
+      <span class="badge ${r.above?'badge-nat':'badge-below'}">${r.above?t('nat_above'):t('nat_below')}</span>
+    `;
+    ref.appendChild(row);
+  });
+}
+
+// ─────────────────────────────────────────────────────────────
+// CLOCK + COUNTDOWN
+// ─────────────────────────────────────────────────────────────
+function updateClock() {
+  document.getElementById('clock').textContent = new Date().toLocaleString('en-GB',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}) + ' NPT';
+}
+function updateCountdown() {
+  const election = new Date('2026-03-05T07:00:00+05:45');
+  const diff = election - new Date();
+  if (diff <= 0) { ['cd-d','cd-h','cd-m','cd-s'].forEach(id => document.getElementById(id).textContent = '0'); return; }
+  document.getElementById('cd-d').textContent = Math.floor(diff/86400000);
+  document.getElementById('cd-h').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+}
+
+// ─────────────────────────────────────────────────────────────
+// TOAST
+// ─────────────────────────────────────────────────────────────
+function toast(msg) {
+  const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+// ─────────────────────────────────────────────────────────────
+// LANGUAGE / i18n SYSTEM
+// ─────────────────────────────────────────────────────────────
+let LANG = 'en';
+
+const T = {
+  en: {
+    // Nav
+    nav_dashboard: 'Dashboard',
+    nav_constituency: 'Constituencies',
+    nav_pr: 'PR Results',
+    // Countdown strip
+    cd_tag: 'Election Day Countdown',
+    cd_days: 'Days', cd_hours: 'Hours', cd_mins: 'Mins', cd_secs: 'Secs',
+    cd_title: 'Pratinidhi Sabha Nirvachan 2082 BS',
+    cd_date: 'Falgun 21, 2082 · <strong>5 March 2026</strong> · 7:00 AM – 5:00 PM NST',
+    cd_voters: '18,903,689 registered voters · 3,484 candidates · 68 parties',
+    // Info strip
+    info_house: 'House of Representatives — Pratinidhi Sabha',
+    info_fptp: '165 FPTP', info_pr: '110 PR', info_total: '275 total', info_maj: 'Majority: 138',
+    // Dashboard
+    notice_title: 'Awaiting Election Day — Falgun 21, 2082 BS (5 March 2026)',
+    notice_body: 'All vote counts are zero. This dashboard will update live once counting begins after 5PM on election day. Party, candidate, and constituency data below is verified from the Election Commission of Nepal and major Nepali news sources.',
+    notice_badge: 'All vote counts = 0 until counting begins',
+    seat_title: 'Seat Allocation — 275 Seats',
+    seat_sub: '138 needed for majority · All at 0',
+    seat_declared: '0 seats declared',
+    seat_total: '275 total · 138 majority',
+    seat_majority: '138 — Majority',
+    party_title: 'Contesting Parties',
+    party_sub: 'Major parties · 68 registered · 2082 BS',
+    party_leader_lbl: 'Leader',
+    party_pm_tag: '★ PM Candidate',
+    const_title: 'Constituencies & Candidates',
+    const_sub: 'Select races shown · Click any row for details',
+    search_placeholder: 'Search constituency or candidate…',
+    filter_all: 'All',
+    col_const: 'Constituency', col_cands: 'Key Candidates', col_voters: 'Voters', col_votes: 'Votes Cast',
+    votes_zero: '0 — not started',
+    show_more: 'Show more ↓',
+    widget_key_races: 'Key Races to Watch',
+    widget_key_races_sub: 'High-profile contests',
+    widget_leaders: "Party Leaders' Seats",
+    widget_provinces: 'Seats by Province',
+    widget_prov_sub: 'FPTP',
+    prov_fptp_suffix: ' FPTP seats',
+    others_label: 'Others',
+    // Constituency page
+    bc_home: 'Home',
+    bc_const: 'Constituencies',
+    sc_placeholder: 'Jump to constituency…',
+    pre_election_badge: '⏳ Pre-Election',
+    election_label: 'Election:',
+    votes_counted: 'Votes Counted',
+    counting_not_started: 'Counting not started',
+    waiting_title: 'Awaiting Falgun 21, 2082 BS — 5 March 2026',
+    waiting_body: 'Candidate data below is verified from the ECN and Nepali media. Vote counts will appear here once counting begins after 5PM election day.',
+    cands_head_pfx: 'Candidates —',
+    votes_lbl: 'votes',
+    badge_pm: '★ PM Candidate',
+    badge_incumbent: 'Incumbent',
+    badge_notable: 'Notable',
+    badge_awaiting: '⏳ Awaiting votes',
+    prev_title: '2079 BS Result',
+    prev_sub: 'Previous election reference',
+    badge_won: 'Won',
+    facts_title: 'Constituency Facts',
+    fact_no: 'Constituency No.',
+    fact_prov: 'Province',
+    fact_dist: 'District',
+    fact_voters: 'Registered Voters',
+    fact_total_cands: 'Total Candidates',
+    fact_votes_cast: 'Votes Cast',
+    fact_turnout: 'Voter Turnout',
+    fact_date: 'Election Date',
+    fact_date_val: '5 Mar 2026',
+    fact_votes_val: '0',
+    fact_turnout_val: '0%',
+    sources_title: 'Data Sources',
+    sources_sub: 'Verified',
+    src_official: 'Official',
+    src_media: 'Media',
+    src_note: 'Candidate data confirmed from ECN official nominations filed Jan 2026.',
+    nearby_title: 'Nearby Constituencies',
+    nearby_data: 'voters',
+    nearby_coming: 'Data coming',
+    // PR page
+    pr_title: 'Proportional Representation',
+    pr_subtitle: 'Samanupatik Nirvachan — 2082 BS / 2026 AD',
+    pr_election: 'Election:',
+    pr_voters: 'Registered voters:',
+    pr_threshold: 'Threshold:',
+    pr_threshold_val: '3% of valid PR votes',
+    pr_notice_title: 'PR results will populate after Election Day — Falgun 21, 2082 BS',
+    pr_notice_body: 'All PR vote counts are 0. Party registration data and the 2079 BS reference results are shown. Nepal uses the <strong>Webster method (first divisor 1.4)</strong> to allocate the 110 PR seats among qualifying parties. Only parties crossing <strong>3% of valid votes</strong> qualify as national parties and receive PR seats.',
+    stat_pr_seats: 'PR Seats', stat_pr_seats_sub: 'Nationwide',
+    stat_threshold: 'Threshold', stat_threshold_sub: 'of valid PR votes',
+    stat_voters: 'Registered Voters', stat_voters_sub: 'ECN Dec 2025',
+    stat_parties: 'Parties Contesting', stat_parties_sub: 'Registered for PR',
+    stat_counted: 'Votes Counted', stat_counted_sub: 'Awaiting election',
+    pr_table_title: 'Registered Parties — PR Vote Tracker',
+    pr_table_sub: 'All 2082 votes at 0 · 2079 BS reference shown',
+    col_rank: '#', col_party: 'Party', col_ne: 'Nepali Name', col_leader: 'Leader',
+    col_votes82: '2082 PR Votes', col_pct82: '2082 Vote %', col_proj: 'Projected Seats',
+    col_ref79: '2079 BS % (Ref.)', col_nat: 'Nat. Party?',
+    awaiting_election: '0 — awaiting election',
+    pr_how_title: 'How PR Seat Allocation Works',
+    pr_how_sub: "Nepal's proportional system",
+    pr_step1_title: '1 — Cast Your PR Vote',
+    pr_step1: 'Each voter gets <strong>two ballot papers</strong>. The second is for a <strong>political party</strong>. This determines PR seat distribution nationally.',
+    pr_step2_title: '2 — 3% Threshold',
+    pr_step2: 'Only parties receiving <strong>≥ 3%</strong> of valid PR votes qualify as National Parties and receive proportional seats. Parties below 3% get zero PR seats.',
+    pr_step3_title: '3 — Webster Method',
+    pr_step3: 'The <strong>110 PR seats</strong> are allocated using the Webster/Sainte-Laguë method with <strong>first divisor 1.4</strong> — making it slightly harder for the smallest qualifying parties.',
+    pr_step4_title: '4 — Inclusivity Quota',
+    pr_step4: "Each party's PR list must guarantee representation of <strong>women, Dalits, Janajatis, Madhesis, Tharus, Muslims</strong>, and other groups per Art. 84 of the Constitution.",
+    pr_warning: '<strong>New entrants to watch in 2082:</strong> Ujyalo Nepal Party (Kulman Ghising), Shram Sanskriti Party (Harka Sampang), and the merged Nepali Communist Party\'s PR share are all uncertain. Any party near the 3% line faces a threshold cliff — missing it means zero PR seats regardless of FPTP performance.',
+    ref_title: '2079 BS Reference — PR Results',
+    ref_sub: 'Previous election · For comparison',
+    nat_above: '✓ National', nat_below: '✕ Below',
+    new_party: 'New 2082', pending: 'Pending',
+    seats_suffix: ' seats',
+    more_suffix: ' more',
+    toast_cand: 'votes will show once counting begins on election day',
+    toast_pr: 'PR votes will populate on election day (Falgun 21)',
+  },
+  ne: {
+    // Nav
+    nav_dashboard: 'ड्यासबोर्ड',
+    nav_constituency: 'निर्वाचन क्षेत्र',
+    nav_pr: 'समानुपातिक नतिजा',
+    // Countdown strip
+    cd_tag: 'निर्वाचन दिन उलटी गन्ती',
+    cd_days: 'दिन', cd_hours: 'घण्टा', cd_mins: 'मिनेट', cd_secs: 'सेकेन्ड',
+    cd_title: 'प्रतिनिधि सभा निर्वाचन २०८२ बि.सं.',
+    cd_date: 'फाल्गुन २१, २०८२ · <strong>५ मार्च २०२६</strong> · बिहान ७:०० – बेलुका ५:०० NST',
+    cd_voters: '१,८९,०३,६८९ दर्ता मतदाता · ३,४८४ उम्मेदवार · ६८ दल',
+    // Info strip
+    info_house: 'प्रतिनिधि सभा — संघीय संसद',
+    info_fptp: '१६५ प्रत्यक्ष', info_pr: '११० समानुपातिक', info_total: '२७५ जम्मा', info_maj: 'बहुमत: १३८',
+    // Dashboard
+    notice_title: 'निर्वाचन दिनको प्रतीक्षामा — फाल्गुन २१, २०८२ (५ मार्च २०२६)',
+    notice_body: 'सबै मत संख्या शून्य छन्। मतदान दिनको साँझ ५ बजे पछि मतगणना सुरु भएपछि यो ड्यासबोर्ड स्वचालित रूपमा अपडेट हुनेछ। तलका दल, उम्मेदवार र निर्वाचन क्षेत्रको जानकारी निर्वाचन आयोग नेपाल र प्रमुख नेपाली सञ्चारमाध्यमबाट प्रमाणित गरिएको हो।',
+    notice_badge: 'मतगणना नभएसम्म सबै मत = ०',
+    seat_title: 'सिट वितरण — २७५ सिट',
+    seat_sub: 'बहुमतका लागि १३८ चाहिन्छ · सबै ०',
+    seat_declared: '० सिट घोषित',
+    seat_total: '२७५ जम्मा · १३८ बहुमत',
+    seat_majority: '१३८ — बहुमत',
+    party_title: 'प्रतिस्पर्धी दलहरू',
+    party_sub: 'प्रमुख दलहरू · ६८ दर्ता · २०८२ बि.सं.',
+    party_leader_lbl: 'नेता',
+    party_pm_tag: '★ प्रधानमन्त्री उम्मेदवार',
+    const_title: 'निर्वाचन क्षेत्र र उम्मेदवार',
+    const_sub: 'चयनित प्रतिस्पर्धाहरू · विवरणका लागि क्लिक गर्नुहोस्',
+    search_placeholder: 'निर्वाचन क्षेत्र वा उम्मेदवार खोज्नुहोस्…',
+    filter_all: 'सबै',
+    col_const: 'निर्वाचन क्षेत्र', col_cands: 'प्रमुख उम्मेदवार', col_voters: 'मतदाता', col_votes: 'खसेका मत',
+    votes_zero: '० — सुरु भएको छैन',
+    show_more: 'थप हेर्नुहोस् ↓',
+    widget_key_races: 'महत्त्वपूर्ण प्रतिस्पर्धाहरू',
+    widget_key_races_sub: 'चर्चित प्रतिस्पर्धा',
+    widget_leaders: 'दल नेताहरूको क्षेत्र',
+    widget_provinces: 'प्रदेशअनुसार सिट',
+    widget_prov_sub: 'प्रत्यक्ष',
+    prov_fptp_suffix: ' प्रत्यक्ष सिट',
+    others_label: 'अन्य',
+    // Constituency page
+    bc_home: 'गृहपृष्ठ',
+    bc_const: 'निर्वाचन क्षेत्र',
+    sc_placeholder: 'निर्वाचन क्षेत्रमा जानुहोस्…',
+    pre_election_badge: '⏳ मतदानपूर्व',
+    election_label: 'निर्वाचन:',
+    votes_counted: 'गनिएका मत',
+    counting_not_started: 'मतगणना सुरु भएको छैन',
+    waiting_title: 'फाल्गुन २१, २०८२ बि.सं. — ५ मार्च २०२६ को प्रतीक्षामा',
+    waiting_body: 'तलका उम्मेदवारको जानकारी निर्वाचन आयोग र नेपाली सञ्चारमाध्यमबाट प्रमाणित। निर्वाचन दिनको साँझपछि मतगणना सुरु भएपछि मत संख्या देखिनेछ।',
+    cands_head_pfx: 'उम्मेदवारहरू —',
+    votes_lbl: 'मत',
+    badge_pm: '★ प्रधानमन्त्री उम्मेदवार',
+    badge_incumbent: 'हालका सांसद',
+    badge_notable: 'उल्लेखनीय',
+    badge_awaiting: '⏳ मतको प्रतीक्षामा',
+    prev_title: '२०७९ बि.सं. को नतिजा',
+    prev_sub: 'अघिल्लो निर्वाचनको सन्दर्भ',
+    badge_won: 'विजयी',
+    facts_title: 'निर्वाचन क्षेत्रको जानकारी',
+    fact_no: 'क्षेत्र नं.',
+    fact_prov: 'प्रदेश',
+    fact_dist: 'जिल्ला',
+    fact_voters: 'दर्ता मतदाता',
+    fact_total_cands: 'जम्मा उम्मेदवार',
+    fact_votes_cast: 'खसेका मत',
+    fact_turnout: 'मतदान प्रतिशत',
+    fact_date: 'मतदान मिति',
+    fact_date_val: '५ मार्च २०२६',
+    fact_votes_val: '०',
+    fact_turnout_val: '०%',
+    sources_title: 'तथ्याङ्कका स्रोतहरू',
+    sources_sub: 'प्रमाणित',
+    src_official: 'आधिकारिक',
+    src_media: 'सञ्चारमाध्यम',
+    src_note: 'उम्मेदवारको जानकारी जनवरी २०२६ मा दर्ता भएको निर्वाचन आयोगको आधिकारिक उम्मेदवारीबाट पुष्टि गरिएको।',
+    nearby_title: 'नजिकका निर्वाचन क्षेत्र',
+    nearby_data: 'मतदाता',
+    nearby_coming: 'जानकारी आउँदैछ',
+    // PR page
+    pr_title: 'समानुपातिक निर्वाचन',
+    pr_subtitle: 'Samanupatik Nirvachan — २०८२ बि.सं. / २०२६ AD',
+    pr_election: 'निर्वाचन:',
+    pr_voters: 'दर्ता मतदाता:',
+    pr_threshold: 'न्यूनतम सीमा:',
+    pr_threshold_val: 'वैध समानुपातिक मतको ३%',
+    pr_notice_title: 'निर्वाचन दिनपछि समानुपातिक नतिजा आउनेछ — फाल्गुन २१, २०८२',
+    pr_notice_body: 'सबै समानुपातिक मत संख्या ० छ। दल दर्ता जानकारी र २०७९ बि.सं.को सन्दर्भ नतिजा देखाइएको छ। नेपालले <strong>वेबस्टर विधि (प्रथम भाजक १.४)</strong> प्रयोग गरेर ११० समानुपातिक सिट वितरण गर्दछ। <strong>वैध मतको ३%</strong> पार गर्ने दलमात्र राष्ट्रिय दल बन्छन् र समानुपातिक सिट पाउँछन्।',
+    stat_pr_seats: 'समानुपातिक सिट', stat_pr_seats_sub: 'राष्ट्रियस्तर',
+    stat_threshold: 'न्यूनतम सीमा', stat_threshold_sub: 'वैध मतको',
+    stat_voters: 'दर्ता मतदाता', stat_voters_sub: 'निर्वाचन आयोग, डिसेम्बर २०२५',
+    stat_parties: 'प्रतिस्पर्धी दल', stat_parties_sub: 'समानुपातिकमा दर्ता',
+    stat_counted: 'गनिएका मत', stat_counted_sub: 'निर्वाचनको प्रतीक्षामा',
+    pr_table_title: 'दर्ता दलहरू — समानुपातिक मत ट्र्याकर',
+    pr_table_sub: '२०८२ का सबै मत ० · २०७९ को सन्दर्भ देखाइएको',
+    col_rank: 'क्र.', col_party: 'दल', col_ne: 'नेपाली नाम', col_leader: 'नेता',
+    col_votes82: '२०८२ समानुपातिक मत', col_pct82: '२०८२ मत %', col_proj: 'अनुमानित सिट',
+    col_ref79: '२०७९ % (सन्दर्भ)', col_nat: 'राष्ट्रिय दल?',
+    awaiting_election: '० — निर्वाचनको प्रतीक्षामा',
+    pr_how_title: 'समानुपातिक सिट वितरण कसरी हुन्छ?',
+    pr_how_sub: 'नेपालको समानुपातिक प्रणाली',
+    pr_step1_title: '१ — समानुपातिक मत दिनुहोस्',
+    pr_step1: 'प्रत्येक मतदाताले <strong>दुई मतपत्र</strong> पाउँछन्। दोस्रो मतपत्र <strong>राजनीतिक दल</strong>लाई दिइन्छ। यसैले राष्ट्रियस्तरमा समानुपातिक सिट निर्धारण हुन्छ।',
+    pr_step2_title: '२ — ३% न्यूनतम सीमा',
+    pr_step2: 'वैध समानुपातिक मतको <strong>≥ ३%</strong> पाउने दलमात्र राष्ट्रिय दल बन्छन् र समानुपातिक सिट पाउँछन्। ३% भन्दा कम पाउने दललाई कुनै समानुपातिक सिट मिल्दैन।',
+    pr_step3_title: '३ — वेबस्टर विधि',
+    pr_step3: '<strong>११० समानुपातिक सिट</strong> वितरण <strong>प्रथम भाजक १.४</strong> सहित वेबस्टर/सेन्ट-लेग्यू विधि प्रयोग गरेर हुन्छ — यसले सबैभन्दा साना योग्य दललाई केही गाह्रो बनाउँछ।',
+    pr_step4_title: '४ — समावेशिता कोटा',
+    pr_step4: 'प्रत्येक दलको समानुपातिक सूचीमा संविधानको धारा ८४ अनुसार <strong>महिला, दलित, जनजाति, मधेसी, थारू, मुस्लिम</strong> र अन्य समूहको प्रतिनिधित्व सुनिश्चित गर्नुपर्छ।',
+    pr_warning: '<strong>२०८२ मा नजर राख्नुपर्ने नयाँ दलहरू:</strong> उज्यालो नेपाल पार्टी (कुलमान घिसिङ), श्रम संस्कृति पार्टी (हर्क सम्पाङ), र विलय भएको नेपाली कम्युनिस्ट पार्टीको समानुपातिक हिस्सा अनिश्चित छ। ३% सीमानजिकका दलहरूका लागि यो निर्णायक हुन सक्छ।',
+    ref_title: '२०७९ बि.सं.को सन्दर्भ — समानुपातिक नतिजा',
+    ref_sub: 'अघिल्लो निर्वाचन · तुलनाका लागि',
+    nat_above: '✓ राष्ट्रिय दल', nat_below: '✕ सीमामुनि',
+    new_party: '२०८२ मा नयाँ', pending: 'निर्णय हुन बाँकी',
+    seats_suffix: ' सिट',
+    more_suffix: ' थप',
+    toast_cand: 'निर्वाचन दिन मतगणना सुरु भएपछि मत देखिनेछ',
+    toast_pr: 'निर्वाचन दिन (फाल्गुन २१) समानुपातिक मत आउनेछ',
+  }
+};
+
+function t(key) { return T[LANG][key] || T.en[key] || key; }
+
+function chooseLang(lang) {
+  document.getElementById('lang-splash').classList.add('hidden');
+  setLang(lang);
+  // Animate body in
+  document.body.style.opacity = '0';
+  requestAnimationFrame(() => {
+    document.body.style.transition = 'opacity .5s ease';
+    document.body.style.opacity = '1';
+  });
+}
+
+function setLang(lang) {
+  LANG = lang;
+  document.body.className = lang === 'ne' ? 'lang-ne' : '';
+  document.getElementById('lb-ne').classList.toggle('active', lang === 'ne');
+  document.getElementById('lb-en').classList.toggle('active', lang === 'en');
+  applyTranslations();
+  // Re-render all dynamic content
+  renderDashboard();
+  renderConst();
+  renderPR();
+}
+
+function applyTranslations() {
+  // Nav buttons
+  document.getElementById('nav-dashboard').textContent    = t('nav_dashboard');
+  document.getElementById('nav-constituency').textContent = t('nav_constituency');
+  document.getElementById('nav-pr').textContent           = t('nav_pr');
+
+  // Countdown labels
+  document.querySelector('.cd-tag').textContent = t('cd_tag');
+  const lbls = document.querySelectorAll('.cd-lbl');
+  ['cd_days','cd_hours','cd_mins','cd_secs'].forEach((k,i) => { if(lbls[i]) lbls[i].textContent = t(k); });
+  const cdRight = document.querySelector('.cd-right');
+  if(cdRight) cdRight.innerHTML = `
+    <p><strong>${t('cd_title')}</strong></p>
+    <p>${t('cd_date')}</p>
+    <p>${t('cd_voters')}</p>`;
+
+  // Info strip
+  const infoSpans = document.querySelectorAll('.info-strip span:not(.info-dot)');
+  const infoKeys = ['info_house','info_fptp','info_pr','info_total','info_maj'];
+  // rebuild info strip entirely for simplicity
+  const is = document.querySelector('.info-strip');
+  if(is) is.innerHTML = `
+    <span>${t('info_house')}</span>
+    <span class="info-dot">·</span>
+    <span><strong>${t('info_fptp')}</strong> ${LANG==='ne'?'सिट':'seats'}</span>
+    <span class="info-dot">+</span>
+    <span><strong>${t('info_pr')}</strong> ${LANG==='ne'?'सिट':'seats'}</span>
+    <span class="info-dot">=</span>
+    <span><strong>${t('info_total')}</strong> ${LANG==='ne'?'सिट':'seats'}</span>
+    <span class="info-dot">·</span>
+    <span>${t('info_maj')}</span>`;
+
+  // Dashboard static text
+  const pn = document.querySelector('.pre-notice');
+  if(pn) pn.innerHTML = `
+    <div class="icon">⏳</div>
+    <div>
+      <h4>${t('notice_title')}</h4>
+      <p>${t('notice_body')}</p>
+      <span class="zero-badge">${t('notice_badge')}</span>
+    </div>`;
+
+  const sh = document.querySelectorAll('.section-head');
+
+  // Seat bar section head
+  if(sh[0]) sh[0].innerHTML = `<h2>${t('seat_title')}</h2><span>${t('seat_sub')}</span>`;
+
+  // Seat bar labels
+  const sbl = document.querySelector('.seat-bar-label');
+  if(sbl) sbl.innerHTML = `<strong>${t('seat_declared')}</strong><span>${t('seat_total')}</span>`;
+  const ml = document.querySelector('.majority-label');
+  if(ml) ml.textContent = t('seat_majority');
+  // Others label in seat legend
+  const othEl = document.querySelector('.others-label');
+  if(othEl) othEl.textContent = t('others_label') + ': 0';
+
+  // Party section head
+  if(sh[1]) sh[1].innerHTML = `<h2>${t('party_title')}</h2><span>${t('party_sub')}</span>`;
+
+  // Constituency section head
+  if(sh[2]) sh[2].innerHTML = `<h2>${t('const_title')}</h2><span>${t('const_sub')}</span>`;
+
+  // Search input placeholder
+  const si = document.getElementById('d-search');
+  if(si) si.placeholder = t('search_placeholder');
+
+  // Filter chips
+  const fc = document.querySelector('.filter-chip');
+  if(fc) fc.textContent = t('filter_all');
+
+  // Table headers
+  const ths = document.querySelectorAll('#page-dashboard thead th');
+  if(ths.length >= 4) {
+    ths[0].textContent = t('col_const');
+    ths[1].textContent = t('col_cands');
+    ths[2].textContent = t('col_voters');
+    ths[3].textContent = t('col_votes');
+  }
+
+  // Show more btn
+  const smb = document.getElementById('show-more');
+  if(smb) smb.textContent = t('show_more');
+
+  // Widget headers
+  const wh = document.querySelectorAll('.widget-header h3');
+  const ws = document.querySelectorAll('.widget-header span');
+  if(wh[0]) wh[0].textContent = t('widget_key_races');
+  if(ws[0]) ws[0].textContent = t('widget_key_races_sub');
+  if(wh[1]) wh[1].textContent = t('widget_leaders');
+  if(wh[2]) wh[2].textContent = t('widget_provinces');
+  if(ws[2]) ws[2].textContent = t('widget_prov_sub');
+
+  // Constituency page breadcrumb
+  const bca = document.querySelectorAll('.breadcrumb a');
+  if(bca[0]) bca[0].textContent = t('bc_home');
+  if(bca[1]) bca[1].textContent = t('bc_const');
+  const sci = document.getElementById('sc-inp');
+  if(sci) sci.placeholder = t('sc_placeholder');
+
+  // Hero static parts
+  const hpb = document.querySelector('.hero-pre-badge');
+  if(hpb) hpb.textContent = t('pre_election_badge');
+  const hud = document.querySelectorAll('.hero-updated');
+  if(hud[0]) hud[0].innerHTML = `${t('election_label')} <strong>5 March 2026</strong>`;
+
+  // Hero bar
+  const hbl = document.querySelector('.hb-label');
+  if(hbl) hbl.textContent = t('votes_counted');
+  const hbd = document.querySelector('.hb-detail');
+  if(hbd) hbd.textContent = t('counting_not_started');
+
+  // Hero waiting
+  const hw = document.querySelector('.hero-waiting .hw-text');
+  if(hw) hw.innerHTML = `<h3>${t('waiting_title')}</h3><p>${t('waiting_body')}</p>`;
+
+  // Prev results section head (inside constituency)
+  const prevSH = document.querySelector('.prev-section .section-head');
+  if(prevSH) prevSH.innerHTML = `<h2>${t('prev_title')}</h2><span>${t('prev_sub')}</span>`;
+
+  // Sources widget
+  const srcW = document.querySelectorAll('.widget-header h3');
+  // PR page handled in renderPR
+}
+
+// ─────────────────────────────────────────────────────────────
+// PROVINCE NAMES IN NEPALI
+// ─────────────────────────────────────────────────────────────
+const PROV_NE = {
+  'Koshi':'कोशी', 'Madhesh':'मधेश', 'Bagmati':'बागमती',
+  'Gandaki':'गण्डकी', 'Lumbini':'लुम्बिनी', 'Karnali':'कर्णाली',
+  'Sudurpashchim':'सुदूरपश्चिम'
+};
+const DIST_NE = {
+  'Jhapa':'झापा','Morang':'मोरङ','Sunsari':'सुनसरी','Sarlahi':'सर्लाही',
+  'Saptari':'सप्तरी','Kathmandu':'काठमाडौं','Lalitpur':'ललितपुर',
+  'Bhaktapur':'भक्तपुर','Chitwan':'चितवन','Nuwakot':'नुवाकोट',
+  'Tanahun':'तनहुँ','Gorkha':'गोर्खा','Myagdi':'म्याग्दी',
+  'Rupandehi':'रुपन्देही','Rukum East':'रुकुम पूर्व'
+};
+function provName(p) { return LANG==='ne' ? (PROV_NE[p]||p) : p; }
+function distName(d) { return LANG==='ne' ? (DIST_NE[d]||d) : d; }
+
+// ─────────────────────────────────────────────────────────────
+// INIT — render with default EN, splash will set lang on choice
+// ─────────────────────────────────────────────────────────────
+renderDashboard();
+renderConst();
+renderPR();
+setupConstSearch();
+updateClock(); setInterval(updateClock, 1000);
+updateCountdown(); setInterval(updateCountdown, 1000);</script>
+</body>
+</html>
